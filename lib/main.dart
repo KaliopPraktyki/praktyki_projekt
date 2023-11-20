@@ -13,9 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
-
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -28,10 +25,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-
-
-
-
   final String title;
 
   @override
@@ -43,8 +36,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-
-
 
       _counter++;
     });
@@ -65,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
 
         child: Column(
-
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
