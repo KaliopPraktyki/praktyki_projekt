@@ -82,11 +82,11 @@ flutter:
   fonts:
     - family: Spoof
       fonts:
-        - asset: assets/fonts/Spoof-Regular.ttf
+        - asset: assets/fonts/Spoof-Regular.otf
           weight: 400
-        - asset: assets/fonts/Spoof-Medium.ttf
+        - asset: assets/fonts/Spoof-Medium.otf
           weight: 500
-        - asset: assets/fonts/Spoof-Bold.ttf
+        - asset: assets/fonts/Spoof-Bold.otf
           weight: 700
 
   #   - family: Trajan Pro
