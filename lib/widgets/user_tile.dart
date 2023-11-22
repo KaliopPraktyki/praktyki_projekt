@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class user_tile extends StatelessWidget {
-  final Image profileImage;
+class UserTile extends StatelessWidget {
+  final String profileImage;
   final String userName;
-  const user_tile({
+  const UserTile({
     Key? key,
     required this.userName,
     required this.profileImage,
@@ -11,16 +11,21 @@ class user_tile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
+        ClipRRect(
             borderRadius: BorderRadius.circular(50),
+            child: Image.asset(profileImage,
+              width: 85,
+              height: 85,)
+        ),
+        const Padding(padding: EdgeInsets.symmetric(vertical: 7)),
+        Text(userName,
+          style:const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
           ),
-          child: profileImage,
-        )
+        ),
       ],
     );
   }
