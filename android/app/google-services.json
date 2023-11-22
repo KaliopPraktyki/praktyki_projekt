@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1076389753315",
+    "project_id": "smooth-talk",
+    "storage_bucket": "smooth-talk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076389753315:android:31d142cdf431d82ea3b0d6",
+        "android_client_info": {
+          "package_name": "com.example.praktyki_projekt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ43sugDKM4yB5QSgtHHBdHKqyLUHiwhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
