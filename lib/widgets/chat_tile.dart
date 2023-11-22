@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class chat_tile extends StatelessWidget {
-  final Image profileImage;
+  final String profileImage;
   final String userName;
   const chat_tile ({
     Key? key,
@@ -11,17 +11,21 @@ class chat_tile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: profileImage,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: Image.asset(profileImage,
+          width: 85,
+          height: 85,)
         ),
-
+        const Padding(padding: EdgeInsets.symmetric(vertical: 7)),
+        Text(userName,
+          style:const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
       ],
     );
   }
