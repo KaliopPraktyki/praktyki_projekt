@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:ionicons/ionicons.dart';
 
 class settings extends StatefulWidget {
@@ -20,8 +21,8 @@ class _settingsState extends State<settings> {
           Ionicons.arrow_back,
           color: Colors.white,)),
         title: Container(
-          margin: EdgeInsets.only(left: 70),
-          child: Text("Profile",
+          margin: EdgeInsets.only(left: 45),
+          child: Text("Settings",
             style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
@@ -37,20 +38,97 @@ class _settingsState extends State<settings> {
             children: [
               Container(
                 margin: EdgeInsets.only(top: 20),
-                child: SizedBox(
-                  width: 120, height: 120,
-                  child: ClipRRect(borderRadius: BorderRadius.circular(100), child: Image.asset("assets/logoWithoutBackground.png"),),
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: 120, height: 120,
+                      child: ClipRRect(borderRadius: BorderRadius.circular(100), child: Image.asset("assets/logoWithoutBackground.png"),),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: GestureDetector(
+                        // onTap: ,
+                        child: Container(
+                          width: 35,
+                          height: 35,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),),
+                          child: const Icon(Ionicons.camera,
+                          color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
+
               ),
               const SizedBox(height: 10,),
               Center(
                 child: Text("Omilian",style: TextStyle(
                   fontSize: 40,
-                  fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),),
               ),
-              const SizedBox(height: 20,)
+              const SizedBox(height: 20,),
+
+              ListTile(
+                leading: Container(
+                  width: 40,
+                  height: 40,
+                  decoration:  BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.green,
+                  ),
+                  child: const Icon(Ionicons.ellipse_outline,
+                  color: Colors.green,),
+                ),
+                title: Text("Active status", style: TextStyle(fontSize: 20,
+                color: Colors.white),),
+
+              ),
+              ListTile(
+                leading: Container(
+                  width: 40,
+                  height: 40,
+                  child: const Icon(Ionicons.person_outline,
+                    color: Colors.white,
+                    size: 45,),
+                ),
+                title: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Text("Username", style: TextStyle(fontSize: 20,
+                      color: Colors.white),),
+                ),
+              ),
+        ListTile(
+          leading: Container(
+            width: 40,
+            height: 40,
+            child: const Icon(Ionicons.lock_closed_outline,
+              color: Colors.white,
+              size: 45,),
+          ),
+          title: Container(
+            margin: EdgeInsets.only(top: 20),
+            child: Text("Change password", style: TextStyle(fontSize: 20,
+                color: Colors.white),),
+          ),),
+              SizedBox(height: 200,),
+              SizedBox(
+                width: 300,
+                height: 50,
+                child: ElevatedButton(onPressed: (){},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      side: BorderSide.none,
+                      shape: const StadiumBorder()
+                    ),
+                    child: const Text("Log out", style: TextStyle(color: Colors.red,
+                    fontSize: 30),)),
+              ),
+
             ],
           ),
         ),
