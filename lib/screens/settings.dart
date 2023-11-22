@@ -84,7 +84,7 @@ class _settingsState extends State<settings> {
                   child: const Icon(Ionicons.ellipse_outline,
                   color: Colors.green,),
                 ),
-                title: Text("Active status", style: TextStyle(fontSize: 30,
+                title: Text("Active status", style: TextStyle(fontSize: 20,
                 color: Colors.white),),
 
               ),
@@ -96,8 +96,11 @@ class _settingsState extends State<settings> {
                     color: Colors.white,
                     size: 45,),
                 ),
-                title: Text("Username", style: TextStyle(fontSize: 30,
-                    color: Colors.white),),
+                title: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Text("Username", style: TextStyle(fontSize: 20,
+                      color: Colors.white),),
+                ),
               ),
         ListTile(
           leading: Container(
@@ -107,19 +110,22 @@ class _settingsState extends State<settings> {
               color: Colors.white,
               size: 45,),
           ),
-          title: Text("Change password", style: TextStyle(fontSize: 30,
-              color: Colors.white),),),
+          title: Container(
+            margin: EdgeInsets.only(top: 20),
+            child: Text("Change password", style: TextStyle(fontSize: 20,
+                color: Colors.white),),
+          ),),
               SizedBox(height: 200,),
               SizedBox(
                 width: 300,
                 height: 50,
                 child: ElevatedButton(onPressed: (){},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: Colors.black,
                       side: BorderSide.none,
                       shape: const StadiumBorder()
                     ),
-                    child: const Text("Log out", style: TextStyle(color: Colors.white,
+                    child: const Text("Log out", style: TextStyle(color: Colors.red,
                     fontSize: 30),)),
               ),
 
