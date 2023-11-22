@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:praktyki_projekt/screens/chat.dart';
+import 'package:praktyki_projekt/screens/conversation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: chat(),
+      home: conversation(),
     );
   }
 }
