@@ -29,6 +29,19 @@ class _settingsState extends State<settings> {
           ),),
         ),
       ),
+      body: SingleChildScrollView(
+        child: Container(
+
+          child: Column(
+            children: [
+              SizedBox(
+                width: 120, height: 120,
+                child: ClipRRect(borderRadius: BorderRadius.circular(100), child: Image(image: AssetImage("assets/chats.gif"),))
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
