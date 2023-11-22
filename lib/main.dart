@@ -2,6 +2,8 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/screens/chat.dart';
 import 'package:praktyki_projekt/screens/login.dart';
+import 'package:praktyki_projekt/screens/conversation.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: loginScreen(),
+
     );
   }
 }
