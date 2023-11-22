@@ -20,12 +20,13 @@ class _settingsState extends State<settings> {
           Ionicons.arrow_back,
           color: Colors.white,)),
         title: Container(
-          margin: EdgeInsets.only(left: 80),
+          margin: EdgeInsets.only(left: 70),
           child: Text("Profile",
             style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
+
           ),),
         ),
       ),
@@ -34,10 +35,22 @@ class _settingsState extends State<settings> {
 
           child: Column(
             children: [
-              SizedBox(
-                width: 120, height: 120,
-                child: ClipRRect(borderRadius: BorderRadius.circular(100), child: Image(image: AssetImage("assets/chats.gif"),))
-              )
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                child: SizedBox(
+                  width: 120, height: 120,
+                  child: ClipRRect(borderRadius: BorderRadius.circular(100), child: Image.asset("assets/logoWithoutBackground.png"),),
+                ),
+              ),
+              const SizedBox(height: 10,),
+              Center(
+                child: Text("Omilian",style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),),
+              ),
+              const SizedBox(height: 20,)
             ],
           ),
         ),
