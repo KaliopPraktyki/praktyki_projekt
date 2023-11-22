@@ -121,7 +121,8 @@ class _settingsState extends State<settings> {
                     ),
                     child: const Text("Log out", style: TextStyle(color: Colors.white,
                     fontSize: 30),)),
-              )
+              ),
+
             ],
           ),
         ),
