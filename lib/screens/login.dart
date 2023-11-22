@@ -16,7 +16,6 @@ class loginScreen extends StatelessWidget {
               scale: 2.2,),
 
               SizedBox(height: 20,),
-
               //Text Login
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +23,7 @@ class loginScreen extends StatelessWidget {
                   SizedBox(width: 20,),
                   Text('Login',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 45,
                     color: Colors.white,
                   ),),
                 ],
@@ -40,6 +39,36 @@ class loginScreen extends StatelessWidget {
                       color: Colors.grey,
                     ),),
                 ],
+              ),
+              Container(
+                margin: EdgeInsets.all(20),
+                height: 70,
+                width: 500,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.black.withOpacity(0.5),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 20),
+                    border: InputBorder.none,
+                    hintText: "Login",
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Icon(Icons.email_outlined,
+                        color: Colors.white,
+                        size: 35,
+                      ),
+                    ),
+                    hintStyle: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),
