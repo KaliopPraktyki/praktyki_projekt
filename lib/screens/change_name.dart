@@ -37,7 +37,7 @@ class _changepasswordState extends State<changename> {
     child: Column(
     children: [
     Container(
-    margin: EdgeInsets.only(top: 50,),
+    margin: EdgeInsets.only(top: 20,),
     child: TextField(
     decoration: InputDecoration(
     icon: Icon(
