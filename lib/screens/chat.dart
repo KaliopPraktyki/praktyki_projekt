@@ -29,6 +29,7 @@ class _chatState extends State<chat> {
               children: [
                 SizedBox(height: height*0.02,),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ClipRRect(
                         borderRadius: BorderRadius.circular(50),
@@ -36,7 +37,6 @@ class _chatState extends State<chat> {
                           width: 60,
                           height: 60,)
                     ),
-                    SizedBox(width: width*0.22,),
                     Text("Chats",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -44,7 +44,6 @@ class _chatState extends State<chat> {
                         fontSize: 25,
                       ),
                     ),
-                    Spacer(),
                     Container(
                       width: 60,
                       height: 60,
@@ -58,7 +57,7 @@ class _chatState extends State<chat> {
                     ),
                   ],
                 ),
-                SizedBox(height: height*0.02,),//header
+                SizedBox(height: height*0.02,),
                 SearchAnchor(
                   builder: (BuildContext context, SearchController controller){
                     return SearchBar(
