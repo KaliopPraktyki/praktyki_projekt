@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
 
-
   runApp(const MyApp());
 }
 
@@ -20,17 +20,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Smooth Talk',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        fontFamily: 'Spoof',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        scaffoldBackgroundColor: Color.fromARGB(255, 32, 32, 33),
         useMaterial3: true,
-
+        fontFamily: "Spoof",
+        scaffoldBackgroundColor: Color.fromARGB(255, 32, 32, 33)
       ),
       debugShowCheckedModeBanner: false,
-      home: loginScreen(),
-
+      home: chat(),
     );
   }
 }
