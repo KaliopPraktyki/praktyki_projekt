@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class registerScreen extends StatefulWidget {
-  const registerScreen({super.key});
+  final VoidCallback showLoginScreen;
+  const registerScreen({
+   Key? key,
+    required this.showLoginScreen,
+  }) : super(key: key);
 
   @override
   State<registerScreen> createState() => _registerScreenState();
@@ -82,7 +86,7 @@ class _registerScreenState extends State<registerScreen> {
                       ),
                       child: const TextField(
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
+                          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                           border: InputBorder.none,
                           hintText: "last name",
                           hintStyle: TextStyle(
@@ -190,7 +194,7 @@ class _registerScreenState extends State<registerScreen> {
                           fontSize: 17,
                           color: Color.fromARGB(255, 55, 87, 57),
                         ),),
-                      onTap: null,
+                      onTap: widget.showLoginScreen,
                     ),
                   ],
                 ),

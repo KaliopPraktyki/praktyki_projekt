@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:praktyki_projekt/auth/auth_screen.dart';
 import 'package:praktyki_projekt/screens/chat.dart';
 import 'package:praktyki_projekt/screens/login.dart';
 
@@ -20,7 +21,7 @@ class _mainScreenState extends State<mainScreen> {
           if(snapshot.hasData) {
               return chat();
           } else {
-              return loginScreen();
+              return authScreen();
           }
         },
       ),
