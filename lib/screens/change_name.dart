@@ -33,8 +33,93 @@ class _changepasswordState extends State<changename> {
             ),),
         ),
       ),
-
-
+      body: Positioned(
+    child: Column(
+    children: [
+    Container(
+    margin: EdgeInsets.only(top: 50,),
+    child: TextField(
+    decoration: InputDecoration(
+    icon: Icon(
+    Icons.person,
+    color: Colors.white,
+    ),
+    enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white),
+    borderRadius: BorderRadius.all(Radius.circular(35.0)),
+    ),
+    focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white),
+    borderRadius: BorderRadius.all(Radius.circular(35.0)),
+    ),
+    contentPadding: EdgeInsets.all(10),
+    hintText: "Name",
+    hintStyle: TextStyle(fontSize: 14,color: Colors.white),
+    ),
+    ),
+    ),
+    Container(
+    margin: EdgeInsets.only(top: 20,),
+    child: TextField(
+    decoration: InputDecoration(
+    icon: Icon(
+    Icons.person_outline,
+    color: Colors.white,
+    ),
+    enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white),
+    borderRadius: BorderRadius.all(Radius.circular(35.0)),
+    ),
+    focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white),
+    borderRadius: BorderRadius.all(Radius.circular(35.0)),
+    ),
+    contentPadding: EdgeInsets.all(10),
+    hintText: "Surname",
+    hintStyle: TextStyle(fontSize: 14,color: Colors.white),
+    ),
+    ),
+    ),
+    Container(
+    margin: EdgeInsets.only(top: 20),
+    child: TextField(
+    decoration: InputDecoration(
+    icon: Icon(
+    Icons.lock,
+    color: Colors.white,
+    ),
+    enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white),
+    borderRadius: BorderRadius.all(Radius.circular(35.0)),
+    ),
+    focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white),
+    borderRadius: BorderRadius.all(Radius.circular(35.0)),
+    ),
+    contentPadding: EdgeInsets.all(10),
+    hintText: "Password",
+    hintStyle: TextStyle(fontSize: 14,color: Colors.white),
+    ),
+    ),
+    ),
+      SizedBox(
+        width: 300,
+        height: 50,
+        child: ElevatedButton(onPressed: (){},
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                side: BorderSide.none,
+                shape: const StadiumBorder()
+            ),
+            child: Container(
+              margin: EdgeInsets.only(top: 10),
+              child: const Text("Change", style: TextStyle(color: Colors.green,
+                  fontSize: 30),),
+            )),
+      ),
+    ],
+      ),
+      ),
     );
   }
 }
