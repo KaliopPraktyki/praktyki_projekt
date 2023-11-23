@@ -17,9 +17,11 @@ class ChatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Row(
           children: [
-            const SizedBox(width: 10,height: 100,),
+            SizedBox(height: height*0.12,),
 
             ClipRRect(
                 borderRadius: BorderRadius.circular(50),
@@ -54,7 +56,6 @@ class ChatTile extends StatelessWidget {
             Column(
 
               children: [
-                const SizedBox(width: 90),
 
                 Text(
                   time,
