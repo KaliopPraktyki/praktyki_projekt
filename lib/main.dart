@@ -1,13 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:praktyki_projekt/screens/main_screen.dart';
-import 'package:praktyki_projekt/screens/register.dart';
 import 'firebase_options.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:praktyki_projekt/screens/chat.dart';
-import 'package:praktyki_projekt/screens/login.dart';
-import 'package:praktyki_projekt/screens/conversation.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

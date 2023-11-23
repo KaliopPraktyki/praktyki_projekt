@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:praktyki_projekt/screens/change_name.dart';
+import 'package:praktyki_projekt/screens/change_password.dart';
 
 class settings extends StatefulWidget {
   const settings({super.key});
@@ -17,7 +19,8 @@ class _settingsState extends State<settings> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: IconButton(onPressed: (){}, icon: Icon(
+        leading: IconButton(onPressed: (){},
+            icon: Icon(
           Ionicons.arrow_back,
           color: Colors.white,)),
         title: Container(
@@ -98,8 +101,14 @@ class _settingsState extends State<settings> {
                 ),
                 title: Container(
                   margin: EdgeInsets.only(top: 20),
-                  child: Text("Username", style: TextStyle(fontSize: 20,
-                      color: Colors.white),),
+                  child: GestureDetector(
+                    onTap: (){
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => const changename()),);
+                    },
+                    child: Text("Change name", style: TextStyle(fontSize: 20,
+                        color: Colors.white),),
+                  ),
                 ),
               ),
         ListTile(
@@ -112,8 +121,14 @@ class _settingsState extends State<settings> {
           ),
           title: Container(
             margin: EdgeInsets.only(top: 20),
-            child: Text("Change password", style: TextStyle(fontSize: 20,
-                color: Colors.white),),
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const changepassword()),
+              );},
+              child: Text("Change password", style: TextStyle(fontSize: 20,
+                  color: Colors.white),),
+            ),
           ),),
               SizedBox(height: 200,),
               SizedBox(
