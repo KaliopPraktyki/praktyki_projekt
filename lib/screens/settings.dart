@@ -103,7 +103,7 @@ class _settingsState extends State<settings> {
                   margin: EdgeInsets.only(top: 20),
                   child: GestureDetector(
                     onTap: (){
-                      Navigator.push(context,
+                          Navigator.push(context,
                           MaterialPageRoute(builder: (context) => const changename()),);
                     },
                     child: Text("Change name", style: TextStyle(fontSize: 20,
