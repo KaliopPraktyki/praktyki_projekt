@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,15 +45,20 @@ class _chatState extends State<chat> {
                         fontSize: 25,
                       ),
                     ),
-                    Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(color: Colors.grey),
-                      ),
-                      child: Icon(Ionicons.add,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: (){
+                        FirebaseAuth.instance.signOut();
+                      },
+                      child: Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: Icon(Ionicons.add,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
