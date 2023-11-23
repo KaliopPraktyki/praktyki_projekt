@@ -5,6 +5,7 @@ import 'package:praktyki_projekt/screens/chat.dart';
 import 'package:praktyki_projekt/screens/login.dart';
 import 'package:praktyki_projekt/screens/conversation.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:praktyki_projekt/screens/settings.dart';
 
 
 void main() async {
