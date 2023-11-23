@@ -1,6 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/widgets/chat_tile.dart';
 import 'package:praktyki_projekt/widgets/user_tile.dart';
