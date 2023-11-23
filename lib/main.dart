@@ -1,15 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/material.dart';
-import 'package:praktyki_projekt/screens/chat.dart';
-import 'package:praktyki_projekt/screens/login.dart';
-import 'package:praktyki_projekt/screens/conversation.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:praktyki_projekt/screens/settings.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:praktyki_projekt/auth/main_screen.dart';
+import 'firebase_options.dart';
+import 'package:flutter/material.dart';
 
-
-void main() async {
-
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
@@ -22,15 +21,32 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Smooth Talk',
-      theme: ThemeData(
-        fontFamily: 'Spoof',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        scaffoldBackgroundColor: Color.fromARGB(255, 32, 32, 33),
-        useMaterial3: true,
-
+      theme: FlexThemeData.dark(
+        colors: const FlexSchemeColor(
+          primary: Color(0xff629f80),
+          primaryContainer: Color(0xff274033),
+          secondary: Color(0xff81b39a),
+          secondaryContainer: Color(0xff4d6b5c),
+          tertiary: Color(0xff88c5a6),
+          tertiaryContainer: Color(0xff356c50),
+          appBarColor: Color(0xff356c50),
+          error: Color(0xffcf6679),
+        ),
+        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+        blendLevel: 13,
+        subThemesData: const FlexSubThemesData(
+          blendOnLevel: 20,
+          useTextTheme: true,
+          alignedDropdown: true,
+          useInputDecoratorThemeInDialogs: true,
+        ),
+        useMaterial3ErrorColors: true,
+        visualDensity: FlexColorScheme.comfortablePlatformDensity,
+        useMaterial3: false,
+        fontFamily:'Spoof',
       ),
       debugShowCheckedModeBanner: false,
-      home: loginScreen(),
+      home: mainScreen(),
 
     );
   }
