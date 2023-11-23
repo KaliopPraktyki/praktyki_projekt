@@ -11,6 +11,8 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Column(
       children: [
         ClipRRect(
@@ -26,6 +28,7 @@ class UserTile extends StatelessWidget {
             fontSize: 20,
           ),
         ),
+        SizedBox(width: width*0.25,),
       ],
     );
   }

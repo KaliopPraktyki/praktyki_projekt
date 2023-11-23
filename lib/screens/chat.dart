@@ -97,7 +97,7 @@ class _chatState extends State<chat> {
                 Row(
                   children: [
                     UserTile(userName: "userName", profileImage: profileImage),
-                    SizedBox(width: width*0.05,),
+
                     UserTile(userName: "userName", profileImage: profileImage),
                   ],
                 ),
