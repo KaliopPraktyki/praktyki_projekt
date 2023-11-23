@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/auth/auth_screen.dart';
 import 'package:praktyki_projekt/screens/chat.dart';
+import 'package:praktyki_projekt/screens/conversation.dart';
 import 'package:praktyki_projekt/screens/login.dart';
 
 class mainScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _mainScreenState extends State<mainScreen> {
       body: StreamBuilder<User?>(stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot){
           if(snapshot.hasData) {
-              return chat();
+              return conversation();
           } else {
               return authScreen();
           }
