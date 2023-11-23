@@ -136,6 +136,7 @@ class _registerScreenState extends State<registerScreen> {
                     color: Colors.black.withOpacity(0.5),
                   ),
                   child: TextField(
+                    keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
                     style: TextStyle(
                       color: Colors.white,
