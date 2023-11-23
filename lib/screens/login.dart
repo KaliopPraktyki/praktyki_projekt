@@ -17,7 +17,7 @@ class _loginScreenState extends State<loginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future signIN() async {
+  Future signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim()
@@ -139,7 +139,7 @@ class _loginScreenState extends State<loginScreen> {
                 //button sing in
                 Padding(padding: EdgeInsets.only(top: 20, left: 100, right: 100),
                 child: GestureDetector(
-                  onTap: signIN,
+                  onTap: signIn,
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 20),
                     decoration: BoxDecoration(
