@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1076389753315",
-    "project_id": "smooth-talk",
-    "storage_bucket": "smooth-talk.appspot.com"
+    "project_number": "903995555065",
+    "project_id": "smooth-talk-ececa",
+    "storage_bucket": "smooth-talk-ececa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1076389753315:android:31d142cdf431d82ea3b0d6",
+        "mobilesdk_app_id": "1:903995555065:android:6446357e4514bdd9a9f628",
         "android_client_info": {
           "package_name": "com.example.praktyki_projekt"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAJ43sugDKM4yB5QSgtHHBdHKqyLUHiwhk"
+          "current_key": "AIzaSyCekiz1Lg2PBAQdFePoQKl6zBd52o0Yxak"
         }
       ],
       "services": {
