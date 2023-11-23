@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class loginScreen extends StatefulWidget {
-  const loginScreen({super.key});
+  final VoidCallback showRegisterScreen;
+  const loginScreen({Key? key,required  this.showRegisterScreen}) : super(key: key);
 
   @override
   State<loginScreen> createState() => _loginScreenState();
@@ -193,7 +196,7 @@ class _loginScreenState extends State<loginScreen> {
                           fontSize: 17,
                           color: Color.fromARGB(255, 55, 87, 57),
                         ),),
-                      onTap: null,
+                      onTap: widget.showRegisterScreen,
                     ),
                   ],
                 ),
