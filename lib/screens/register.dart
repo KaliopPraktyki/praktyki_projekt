@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class registerScreen extends StatefulWidget {
@@ -12,6 +13,28 @@ class registerScreen extends StatefulWidget {
 }
 
 class _registerScreenState extends State<registerScreen> {
+
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future singUp() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim()
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,13 +84,14 @@ class _registerScreenState extends State<registerScreen> {
                         borderRadius: BorderRadius.circular(16),
                         color: Colors.black.withOpacity(0.5),
                       ),
-                      child: const TextField(
+                      child: TextField(
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
                           border: InputBorder.none,
                           hintText: "first name",
-
-                          
                           hintStyle: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -84,7 +108,10 @@ class _registerScreenState extends State<registerScreen> {
                         borderRadius: BorderRadius.circular(16),
                         color: Colors.black.withOpacity(0.5),
                       ),
-                      child: const TextField(
+                      child: TextField(
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                           border: InputBorder.none,
@@ -108,7 +135,11 @@ class _registerScreenState extends State<registerScreen> {
                     borderRadius: BorderRadius.circular(16),
                     color: Colors.black.withOpacity(0.5),
                   ),
-                  child: const TextField(
+                  child: TextField(
+                    controller: _emailController,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(vertical: 20),
                       border: InputBorder.none,
@@ -137,7 +168,12 @@ class _registerScreenState extends State<registerScreen> {
                     borderRadius: BorderRadius.circular(16),
                     color: Colors.black.withOpacity(0.5),
                   ),
-                  child: const TextField(
+                  child: TextField(
+                    obscureText: true,
+                    controller: _passwordController,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(vertical: 20),
                       border: InputBorder.none,
@@ -160,18 +196,21 @@ class _registerScreenState extends State<registerScreen> {
 
                 //button sing in
                 Padding(padding: EdgeInsets.only(top: 20, left: 100, right: 100),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 55, 87, 57),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'SING UP',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
+                  child: GestureDetector(
+                    onTap: singUp,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 55, 87, 57),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'SING UP',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
