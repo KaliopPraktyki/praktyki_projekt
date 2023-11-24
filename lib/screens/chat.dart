@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/widgets/chat_tile.dart';
 import 'package:praktyki_projekt/widgets/user_tile.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:praktyki_projekt/screens/settings.dart';
 
 class chat extends StatefulWidget {
   const chat({super.key});
@@ -30,11 +31,18 @@ class _chatState extends State<chat> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.asset(profileImage,
-                          width: 60,
-                          height: 60,)
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => const settings()),
+          );
+          },
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(profileImage,
+                            width: 60,
+                            height: 60,)
+                      ),
                     ),
                     Text("Chats",
                       textAlign: TextAlign.center,
@@ -43,20 +51,15 @@ class _chatState extends State<chat> {
                         fontSize: 25,
                       ),
                     ),
-                    GestureDetector(
-                      onTap: (){
-                        FirebaseAuth.instance.signOut();
-                      },
-                      child: Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: Icon(Ionicons.add,
-                          color: Colors.white,
-                        ),
+                    Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: Colors.grey),
+                      ),
+                      child: Icon(Ionicons.add,
+                        color: Colors.white,
                       ),
                     ),
                   ],
