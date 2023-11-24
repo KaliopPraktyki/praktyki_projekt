@@ -33,7 +33,7 @@ class _chatState extends State<chat> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Navigator.pushReplacement(context,
+                        Navigator.push(context,
                           MaterialPageRoute(builder: (context) => const settings()),
           );
           },
