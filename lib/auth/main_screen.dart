@@ -20,7 +20,7 @@ class _mainScreenState extends State<mainScreen> {
       body: StreamBuilder<User?>(stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot){
           if(snapshot.hasData) {
-              return conversation();
+              return chat();
           } else {
               return authScreen();
           }
