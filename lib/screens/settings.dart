@@ -153,8 +153,8 @@ class _settingsState extends State<settings> {
                     ),
                     child: GestureDetector(
                       onTap: (){
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => mainScreen()),);
+                        FirebaseAuth.instance.signOut();
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => mainScreen()));
                       },
                       child: const Text("Log out", style: TextStyle(color: Colors.red,
                       fontSize: 30),),
