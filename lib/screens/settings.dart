@@ -142,23 +142,17 @@ class _settingsState extends State<settings> {
               SizedBox(
                 width: 300,
                 height: 50,
-                child: ElevatedButton(onPressed: (){
+                child: TextButton(onPressed: (){
                   FirebaseAuth.instance.signOut();
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => mainScreen()));
                 },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       side: BorderSide.none,
                       shape: const StadiumBorder()
                     ),
-                    child: GestureDetector(
-                      onTap: (){
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => mainScreen()),);
-                      },
-                      child: const Text("Log out", style: TextStyle(color: Colors.red,
-                      fontSize: 30),),
-                    )),
+                    child: const Text("Log out", style: TextStyle(color: Colors.red,
+                    fontSize: 30),)),
               ),
 
             ],
