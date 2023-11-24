@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:praktyki_projekt/auth/main_screen.dart';
+import 'package:praktyki_projekt/main.dart';
 import 'package:praktyki_projekt/screens/change_name.dart';
 import 'package:praktyki_projekt/screens/change_password.dart';
+import 'package:praktyki_projekt/screens/chat.dart';
 
 class settings extends StatefulWidget {
   const settings({super.key});
@@ -19,7 +23,11 @@ class _settingsState extends State<settings> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: IconButton(onPressed: (){},
+        leading: IconButton(onPressed: (){
+          Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const chat()),
+          );
+        },
             icon: Icon(
           Ionicons.arrow_back,
           color: Colors.white,)),
@@ -134,7 +142,9 @@ class _settingsState extends State<settings> {
               SizedBox(
                 width: 300,
                 height: 50,
-                child: ElevatedButton(onPressed: (){},
+                child: ElevatedButton(onPressed: (){
+                  // logout
+                },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       side: BorderSide.none,
