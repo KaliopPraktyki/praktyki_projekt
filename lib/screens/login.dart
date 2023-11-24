@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:praktyki_projekt/screens/forgot_password.dart';
 
 class loginScreen extends StatefulWidget {
   final VoidCallback showRegisterScreen;
@@ -176,7 +177,11 @@ class _loginScreenState extends State<loginScreen> {
                           fontSize: 17,
                           color: Color.fromARGB(255, 55, 87, 57),
                         ),),
-                    onTap: null,
+                    onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return forgotPasswordScreen();
+                        },),);
+                    },
                     ),
                   ],
                 ),

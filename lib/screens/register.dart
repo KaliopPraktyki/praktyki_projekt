@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,22 @@ class _registerScreenState extends State<registerScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim()
     );
+    addUserDetails(
+        _firstNameController.text.trim(),
+        _lastNameController.text.trim(),
+        _emailController.text.trim(),
+    );
+
+  }
+
+  Future addUserDetails(String firstName, String lastName, String email,) async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance.collection('users').doc(userId).set({
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'userId': userId,
+    });
   }
 
   @override
@@ -85,6 +102,7 @@ class _registerScreenState extends State<registerScreen> {
                         color: Colors.black.withOpacity(0.5),
                       ),
                       child: TextField(
+                        controller: _firstNameController,
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -109,6 +127,7 @@ class _registerScreenState extends State<registerScreen> {
                         color: Colors.black.withOpacity(0.5),
                       ),
                       child: TextField(
+                        controller: _lastNameController,
                         style: TextStyle(
                           color: Colors.white,
                         ),
