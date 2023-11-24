@@ -151,8 +151,14 @@ class _settingsState extends State<settings> {
                       side: BorderSide.none,
                       shape: const StadiumBorder()
                     ),
-                    child: const Text("Log out", style: TextStyle(color: Colors.red,
-                    fontSize: 30),)),
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => mainScreen()),);
+                      },
+                      child: const Text("Log out", style: TextStyle(color: Colors.red,
+                      fontSize: 30),),
+                    )),
               ),
 
             ],
