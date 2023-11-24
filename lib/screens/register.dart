@@ -19,6 +19,9 @@ class _registerScreenState extends State<registerScreen> {
   final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _formfield = GlobalKey<FormState>();
+  bool passToggle = true;
+
 
   @override
   void dispose() {
@@ -58,210 +61,244 @@ class _registerScreenState extends State<registerScreen> {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                //logo
-                Image.asset('assets/logoWithoutBackground.png',
-                  scale: 1.5,),
-
-                SizedBox(height: 5,),
-                //Text Login
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 20,),
-                    Text('Register',
-                      style: TextStyle(
-                        fontSize: 45,
-                        color: Colors.white,
-                      ),),
-                  ],
-                ),
-                //Please sign in to continue
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 20,),
-                    Text('Please sign up to continue',
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.grey,
-                      ),),
-                  ],
-                ),
-                //first name & last name
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(12),
-                      height: 70,
-                      width: 180,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.black.withOpacity(0.5),
-                      ),
-                      child: TextField(
-                        controller: _firstNameController,
+            child: Form(
+              key: _formfield,
+              child: Column(
+                children: [
+                  //logo
+                  Image.asset('assets/logoWithoutBackground.png',
+                    scale: 1.5,),
+              
+                  SizedBox(height: 5,),
+                  //Text Login
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 20,),
+                      Text('Register',
                         style: TextStyle(
+                          fontSize: 45,
                           color: Colors.white,
-                        ),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
-                          border: InputBorder.none,
-                          hintText: "first name",
-                          hintStyle: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.all(12),
-                      height: 70,
-                      width: 180,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.black.withOpacity(0.5),
-                      ),
-                      child: TextField(
-                        controller: _lastNameController,
+                        ),),
+                    ],
+                  ),
+                  //Please sign in to continue
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 20,),
+                      Text('Please sign up to continue',
                         style: TextStyle(
-                          color: Colors.white,
-                        ),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                          border: InputBorder.none,
-                          hintText: "last name",
-                          hintStyle: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                //email textfield
-                Container(
-                  margin: EdgeInsets.all(12),
-                  height: 70,
-                  width: 500,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.black.withOpacity(0.5),
+                          fontSize: 25,
+                          color: Colors.grey,
+                        ),),
+                    ],
                   ),
-                  child: TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: _emailController,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: 20),
-                      border: InputBorder.none,
-                      hintText: "email",
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Icon(Icons.email_rounded,
-                          color: Colors.white,
-                          size: 35,
+
+                  SizedBox(height: 10,),
+                  //first name & last name
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(12),
+                        height: 80,
+                        width: 180,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                      ),
-                      hintStyle: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-
-                //password textfield
-                Container(
-                  margin: EdgeInsets.all(12),
-                  height: 70,
-                  width: 500,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.black.withOpacity(0.5),
-                  ),
-                  child: TextField(
-                    obscureText: true,
-                    controller: _passwordController,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: 20),
-                      border: InputBorder.none,
-                      hintText: "password",
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Icon(Icons.lock,
-                          color: Colors.white,
-                          size: 35,
-                        ),
-                      ),
-                      hintStyle: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-
-                  ),
-                ),
-
-                //button sing in
-                Padding(padding: EdgeInsets.only(top: 20, left: 100, right: 100),
-                  child: GestureDetector(
-                    onTap: singUp,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 55, 87, 57),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'SING UP',
+                        child: TextFormField(
+                          controller: _firstNameController,
+                          validator: (value){
+                            if(value!.isEmpty) {
+                              return "Enter first name";
+                            }
+                          },
                           style: TextStyle(
-                            fontSize: 20,
                             color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
+                            border: InputBorder.none,
+                            hintText: "first name",
+                            hintStyle: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+              
+                      Container(
+                        margin: EdgeInsets.all(12),
+                        height: 80,
+                        width: 180,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: TextFormField(
+                          controller: _lastNameController,
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return "Enter last name";
+                            }
+                          },
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                            border: InputBorder.none,
+                            hintText: "last name",
+                            hintStyle: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+              
+                  //email textfield
+                  Container(
+                    margin: EdgeInsets.all(12),
+                    height: 80,
+                    width: 500,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: TextFormField(
+                      validator: (value){
+                        if(value!.isEmpty){
+                          return "Enter Email";
+                        }
+                        bool emailValid = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(value);
+                        if(!emailValid){
+                          return "Enter Valid Email";
+                        }
+                      },
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 20),
+                        border: InputBorder.none,
+                        labelText: "email", labelStyle: TextStyle(color: Colors.white, fontSize: 20),
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Icon(Icons.email_rounded,
+                            color: Colors.white,
+                            size: 35,
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-
-                //forgot password
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Already have an account? ',
+              
+                  //password textfield
+                  Container(
+                    margin: EdgeInsets.all(12),
+                    height: 80,
+                    width: 500,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: TextFormField(
+                      obscureText: passToggle,
+                      controller: _passwordController,
+                      validator: (value){
+                        if(value!.isEmpty){
+                          return "Enter password";
+                        } else if (_passwordController.text.length < 6 ){
+                            return "Min. lenght password is 6";
+                        }
+                      },
                       style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.grey,
-                      ),),
-                    GestureDetector(
-                      child: Text('Sing In',
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 20),
+                        border: InputBorder.none,
+                        labelText: "password", labelStyle: TextStyle(color: Colors.white, fontSize: 20),
+                        suffixIcon: InkWell(
+                          onTap: (){
+                            setState(() {
+                              passToggle = !passToggle;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15),
+                            child: Icon(passToggle ? Icons.visibility : Icons.visibility_off),
+                          ),
+                        ),
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Icon(Icons.lock,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                        ),
+                      ),
+              
+                    ),
+                  ),
+              
+                  //button sing in
+                  Padding(padding: EdgeInsets.only(top: 20, left: 100, right: 100),
+                    child: GestureDetector(
+                      onTap: (){
+                        if(_formfield.currentState!.validate()){
+
+                        }
+                        singUp();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 55, 87, 57),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'SING UP',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              
+                  //forgot password
+                  SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Already have an account? ',
                         style: TextStyle(
                           fontSize: 17,
-                          color: Color.fromARGB(255, 55, 87, 57),
+                          color: Colors.grey,
                         ),),
-                      onTap: widget.showLoginScreen,
-                    ),
-                  ],
-                ),
-
-                //new to smooth talk
-                SizedBox(height: 10,),
-
-              ],
+                      GestureDetector(
+                        child: Text('Sing In',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Color.fromARGB(255, 55, 87, 57),
+                          ),),
+                        onTap: widget.showLoginScreen,
+                      ),
+                    ],
+                  ),
+              
+                  SizedBox(height: 10,),
+              
+                ],
+              ),
             ),
           ),
         ),
