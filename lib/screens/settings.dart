@@ -142,9 +142,9 @@ class _settingsState extends State<settings> {
               SizedBox(
                 width: 300,
                 height: 50,
-                child: ElevatedButton(onPressed: (){
+                child: TextButton(onPressed: (){
                   FirebaseAuth.instance.signOut();
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => mainScreen()));
                 },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
