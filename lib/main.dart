@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:praktyki_projekt/auth/main_screen.dart';
-import 'package:praktyki_projekt/screens/settings.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +47,6 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: mainScreen(),
-
     );
   }
 }

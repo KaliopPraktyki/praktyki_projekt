@@ -11,10 +11,15 @@ class chat extends StatefulWidget {
   @override
   State<chat> createState() => _chatState();
 }
+
 String profileImage = "assets/logo.png";
 
 
 class _chatState extends State<chat> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -33,10 +38,8 @@ class _chatState extends State<chat> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const settings()),
-          );
-          },
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const settings()),);
+                      },
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(50),
                           child: Image.asset(profileImage,
@@ -108,38 +111,11 @@ class _chatState extends State<chat> {
                   ],
                 ),
                 SizedBox(height: height*0.02,),
-                Row(
-                  children: [
-                    Text("Now",
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 30
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    ChatTile(userName: "userName", profileImage: profileImage, lastMessage: "lastMessage", time: "time", numberOffUnreadMessages: "numberOffUnreadMessages"),
-                    ChatTile(userName: "userName", profileImage: profileImage, lastMessage: "lastMessage", time: "time", numberOffUnreadMessages: "numberOffUnreadMessages"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text("Yesterday",
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 30
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    ChatTile(userName: "userName", profileImage: profileImage, lastMessage: "lastMessage", time: "time", numberOffUnreadMessages: "numberOffUnreadMessages"),
-                    ChatTile(userName: "userName", profileImage: profileImage, lastMessage: "lastMessage", time: "time", numberOffUnreadMessages: "numberOffUnreadMessages"),
-                  ],
-                ),
+                Container(
+                  width: width*0.85,
+                  height: 500,
+                  child: ChatTile(),
+                )
               ],
             ),
           ),
