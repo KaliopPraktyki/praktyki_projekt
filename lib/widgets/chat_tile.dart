@@ -120,7 +120,7 @@ class _ChatTileState extends State<ChatTile> {
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=> conversation(
               receiverUserEmail: data['email'],
-              receiverUserID: data['uid'],
+              receiverUserID: data['userId'],
             )));
           },
         ),
