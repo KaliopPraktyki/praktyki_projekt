@@ -6,7 +6,18 @@ import 'package:praktyki_projekt/model/message.dart';
 class conversation_service extends ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  String? firstName = "";
+  String? lastName = "";
 
+  final uid = FirebaseAuth.instance.currentUser!.uid;
+  Future <void> getUserName() async {
+    await FirebaseFirestore.instance.collection('users').where('userId', isEqualTo: uid).get().then((user) async {
+      user.docs.forEach((result) {
+        firstName = result.data()['firstName'];
+        lastName = result.data()['lastName'];
+      });
+    });
+  }
   //send msg
   Future<void> sendMessage(String receiverId, String message) async {
     final String currentUserId = _firebaseAuth.currentUser!.uid;
@@ -16,7 +27,7 @@ class conversation_service extends ChangeNotifier {
     //new msg
     Message newMessage = Message(
         senderId: currentUserId,
-        senderEmail: currentUserEmail,
+        senderName: firstName!,
         receiverId: receiverId,
         message: message,
         timestamp: timestamp
