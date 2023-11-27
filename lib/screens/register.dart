@@ -52,6 +52,7 @@ class _registerScreenState extends State<registerScreen> {
       'lastName': lastName,
       'email': email,
       'userId': userId,
+      'profilePicture': "",
     });
   }
 

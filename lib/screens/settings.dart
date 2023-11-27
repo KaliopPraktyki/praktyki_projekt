@@ -36,7 +36,6 @@ class _settingsState extends State<settings> {
           child: Text("Settings",
             style: TextStyle(
                 fontSize: 40,
-                fontWeight: FontWeight.bold,
                 color: Colors.white,
 
           ),),
@@ -77,8 +76,8 @@ class _settingsState extends State<settings> {
               ),
               const SizedBox(height: 10,),
               Center(
-                child: Text("Omilian",style: TextStyle(
-                  fontSize: 40,
+                child: Text("Mateusz Omilian",style: TextStyle(
+                  fontSize: 30,
                   color: Colors.white,
                 ),),
               ),
@@ -95,7 +94,8 @@ class _settingsState extends State<settings> {
                   child: const Icon(Ionicons.ellipse_outline,
                   color: Colors.green,),
                 ),
-                title: Text("Active status", style: TextStyle(fontSize: 20,
+                title: Text("Active status", style: TextStyle(fontSize: 20
+                    ,
                 color: Colors.white),),
 
               ),
