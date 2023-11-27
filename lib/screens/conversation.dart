@@ -93,7 +93,7 @@ class _convetdstionState extends State<conversation> {
               ? MainAxisAlignment.end
               : MainAxisAlignment.start,
           children: [
-            Text(data['senderName']),
+            Text(data['senderEmail']),
             const SizedBox(height: 5),
             conversationBubble(message: data['message']),
           ],
