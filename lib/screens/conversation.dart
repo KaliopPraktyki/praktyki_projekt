@@ -13,16 +13,10 @@ class conversation extends StatefulWidget {
   });
 
   @override
-  State<conversation> createrState() => _conversationState();
-
-  @override
-  State<StatefulWidget> createState() {
-    throw UnimplementedError();
-  }
+  State<conversation> createState() => _convetdstionState();
 }
 
-class _conversationState extends State<conversation> {
-
+class _convetdstionState extends State<conversation> {
   final TextEditingController _messageController = TextEditingController();
   final conversation_service _coversation_service = conversation_service();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -35,7 +29,6 @@ class _conversationState extends State<conversation> {
       _messageController.clear();
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +36,7 @@ class _conversationState extends State<conversation> {
       body: Column(
         children: [
           Expanded(
-              child: _buildMessageList(),
+            child: _buildMessageList(),
           ),
 
           _buildMessageInput(),
@@ -55,20 +48,20 @@ class _conversationState extends State<conversation> {
   //msg list
   Widget _buildMessageList() {
     return StreamBuilder(stream: _coversation_service.getMessages(widget.receiverUserID, _firebaseAuth.currentUser!.uid),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text('Error${snapshot.error}');
-          }
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Error${snapshot.error}');
+        }
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('Loading..');
-          }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text('Loading..');
+        }
 
-          return ListView(
-            children: snapshot.data!.docs.map((document) =>
-                _buildMessageItem(document)).toList(),
-          );
-        },
+        return ListView(
+          children: snapshot.data!.docs.map((document) =>
+              _buildMessageItem(document)).toList(),
+        );
+      },
     );
   }
 
@@ -106,11 +99,11 @@ class _conversationState extends State<conversation> {
       children: [
         //textfield
         Expanded(
-            child: TextField(
-              controller: _messageController,
-              decoration: InputDecoration(hintText: 'send message'),
-              obscureText: false,
-            ),
+          child: TextField(
+            controller: _messageController,
+            decoration: InputDecoration(hintText: 'send message'),
+            obscureText: false,
+          ),
         ),
 
         IconButton(
@@ -118,7 +111,7 @@ class _conversationState extends State<conversation> {
           icon: const Icon(
             Icons.arrow_upward,
             size: 40,),
-          )
+        )
       ],
     );
   }
