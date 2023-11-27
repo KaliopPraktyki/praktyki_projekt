@@ -61,6 +61,7 @@ class _ChatTileState extends State<ChatTile> {
               const SizedBox(width: 10),
 
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(data['email'],
                     style:const TextStyle(
