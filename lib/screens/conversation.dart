@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:praktyki_projekt/components/conversation_bubble.dart';
 import 'package:praktyki_projekt/services/conversation_service.dart';
 
 class conversation extends StatefulWidget {
@@ -39,7 +40,10 @@ class _convetdstionState extends State<conversation> {
             child: _buildMessageList(),
           ),
 
+          //user input
           _buildMessageInput(),
+
+          const SizedBox(height: 25),
         ],
       ),
     );
@@ -86,7 +90,8 @@ class _convetdstionState extends State<conversation> {
               : MainAxisAlignment.start,
           children: [
             Text(data['senderEmail']),
-            Text(data['message']),
+            const SizedBox(height: 5),
+            conversationBubble(message: data['message']),
           ],
         ),
       ),
@@ -95,24 +100,27 @@ class _convetdstionState extends State<conversation> {
 
   //msg input
   Widget _buildMessageInput() {
-    return Row(
-      children: [
-        //textfield
-        Expanded(
-          child: TextField(
-            controller: _messageController,
-            decoration: InputDecoration(hintText: 'send message'),
-            obscureText: false,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Row(
+        children: [
+          //textfield
+          Expanded(
+            child: TextField(
+              controller: _messageController,
+              decoration: InputDecoration(hintText: 'send message'),
+              obscureText: false,
+            ),
           ),
-        ),
 
-        IconButton(
-          onPressed: sendMessage,
-          icon: const Icon(
-            Icons.arrow_upward,
-            size: 40,),
-        )
-      ],
+          IconButton(
+            onPressed: sendMessage,
+            icon: const Icon(
+              Icons.arrow_upward,
+              size: 40,),
+          )
+        ],
+      ),
     );
   }
 }
