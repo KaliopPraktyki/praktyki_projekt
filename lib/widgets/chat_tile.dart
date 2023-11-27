@@ -45,6 +45,7 @@ class _ChatTileState extends State<ChatTile> {
 
     if(_auth.currentUser!.email != data['email']){
       return Container(
+
         child: GestureDetector(
           child: Row(
             children: [
