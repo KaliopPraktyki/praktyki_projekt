@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:praktyki_projekt/components/conversation_bubble.dart';
 import 'package:praktyki_projekt/services/conversation_service.dart';
 
@@ -30,6 +31,9 @@ class _convetdstionState extends State<conversation> {
       _messageController.clear();
     }
   }
+
+  bool _showEmoji = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,9 +120,10 @@ class _convetdstionState extends State<conversation> {
           IconButton(
             onPressed: sendMessage,
             icon: const Icon(
-              Icons.arrow_upward,
-              size: 40,),
-          )
+              Ionicons.send,
+              size: 35
+            ),
+          ),
         ],
       ),
     );
