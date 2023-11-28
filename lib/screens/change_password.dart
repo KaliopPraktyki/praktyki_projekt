@@ -45,12 +45,10 @@ class _changepasswordState extends State<changepassword> {
       FirebaseAuth.instance.signOut();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => mainScreen()));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        backgroundColor: Colors.black26,
+        backgroundColor: Colors.green,
         content: Text('Your passwod has benn changed.. Login again !'),
       ),);
-    }catch (error){
-
-    }
+    }catch (error){}
   }
 
 
