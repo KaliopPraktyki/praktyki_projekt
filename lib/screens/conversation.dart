@@ -32,8 +32,6 @@ class _convetdstionState extends State<conversation> {
     }
   }
 
-  bool _showEmoji = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
