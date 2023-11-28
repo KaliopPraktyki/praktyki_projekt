@@ -1,17 +1,49 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:praktyki_projekt/auth/main_screen.dart';
+import 'package:praktyki_projekt/main.dart';
 import 'package:praktyki_projekt/screens/settings.dart';
 
 class changename extends StatefulWidget {
   const changename({super.key});
 
   @override
-  State<changename> createState() => _changepasswordState();
+  State<changename> createState() => _changenameState();
 }
 
-class _changepasswordState extends State<changename> {
+class _changenameState extends State<changename> {
+  @override
+
+  final _formKey  = GlobalKey <FormState>();
+
+  var newName = "";
+
+  final newNameController = TextEditingController();
+
+  @override
+  void dispose() {
+  newNameController.dispose();
+  super.dispose();
+  }
+
+  final currentUser =  FirebaseAuth.instance.currentUser;
+
+  changename() async{
+  try {
+  await currentUser!.updatePassword(newName);
+  FirebaseAuth.instance.signOut();
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => mainScreen()));
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  backgroundColor: Colors.green,
+  content: Text('Your name has benn changed.. Login again !'),
+  ),);
+  }catch (error){}
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.black,
@@ -34,91 +66,68 @@ class _changepasswordState extends State<changename> {
         ),
       ),
       body: Positioned(
-    child: Column(
-    children: [
-    Container(
-    margin: EdgeInsets.only(top: 20,),
-    child: TextField(
-    decoration: InputDecoration(
-    icon: Icon(
-    Icons.person,
-    color: Colors.white,
-    ),
-    enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white),
-    borderRadius: BorderRadius.all(Radius.circular(35.0)),
-    ),
-    focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white),
-    borderRadius: BorderRadius.all(Radius.circular(35.0)),
-    ),
-    contentPadding: EdgeInsets.all(10),
-    hintText: "Name",
-    hintStyle: TextStyle(fontSize: 14,color: Colors.white),
-    ),
-    ),
-    ),
-    Container(
-    margin: EdgeInsets.only(top: 20,),
-    child: TextField(
-    decoration: InputDecoration(
-    icon: Icon(
-    Icons.person_outline,
-    color: Colors.white,
-    ),
-    enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white),
-    borderRadius: BorderRadius.all(Radius.circular(35.0)),
-    ),
-    focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white),
-    borderRadius: BorderRadius.all(Radius.circular(35.0)),
-    ),
-    contentPadding: EdgeInsets.all(10),
-    hintText: "Surname",
-    hintStyle: TextStyle(fontSize: 14,color: Colors.white),
-    ),
-    ),
-    ),
-    Container(
-    margin: EdgeInsets.only(top: 20),
-    child: TextField(
-    decoration: InputDecoration(
-    icon: Icon(
-    Icons.lock,
-    color: Colors.white,
-    ),
-    enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white),
-    borderRadius: BorderRadius.all(Radius.circular(35.0)),
-    ),
-    focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.white),
-    borderRadius: BorderRadius.all(Radius.circular(35.0)),
-    ),
-    contentPadding: EdgeInsets.all(10),
-    hintText: "Password",
-    hintStyle: TextStyle(fontSize: 14,color: Colors.white),
-    ),
-    ),
-    ),
-      SizedBox(
-        width: 300,
-        height: 50,
-        child: ElevatedButton(onPressed: (){},
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                side: BorderSide.none,
-                shape: const StadiumBorder()
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Form(
+                    key: _formKey,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        icon: Icon(
+                          Icons.lock,
+                          color: Colors.white,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(35.0)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(35.0)),
+                        ),
+                        contentPadding: EdgeInsets.all(10),
+                        hintText: "New Name",
+                        hintStyle: TextStyle(fontSize: 14,color: Colors.white),
+                      ),
+                      controller: newNameController,
+                      validator: (value){
+                        if(value == null || value.isEmpty){
+                          return "Please enter name";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-            child: Container(
-              margin: EdgeInsets.only(top: 10),
-              child: const Text("Change", style: TextStyle(color: Colors.green,
-                  fontSize: 30),),
-            )),
-      ),
-    ],
-      ),
+            SizedBox(
+              width: 300,
+              height: 50,
+              child: ElevatedButton(onPressed: (){
+                if (_formKey.currentState!.validate()) {
+                  setState(() {
+                    newName = newNameController.text;
+                  });
+                  changename();
+                }
+              },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      side: BorderSide.none,
+                      shape: const StadiumBorder()
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: const Text("Change", style: TextStyle(color: Colors.green,
+                        fontSize: 30),),
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
