@@ -27,7 +27,7 @@ class _chatState extends State<chat> {
     return Scaffold(
       body:SafeArea(
         child:Center(
-          child: Container(
+          child: SizedBox(
             width: width*0.85,
             height: height,
             child:Column(
@@ -103,19 +103,8 @@ class _chatState extends State<chat> {
                   },
                 ),
                 SizedBox(height: height*0.02,),
-                Row(
-                  children: [
-                    UserTile(userName: "userName", profileImage: profileImage),
-
-                    UserTile(userName: "userName", profileImage: profileImage),
-                  ],
-                ),
-                SizedBox(height: height*0.02,),
-                Container(
-                  width: width*0.85,
-                  height: 500,
-                  child: ChatTile(),
-                )
+                UserTile(),
+                ChatTile(),
               ],
             ),
           ),

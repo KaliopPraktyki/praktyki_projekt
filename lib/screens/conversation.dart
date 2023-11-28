@@ -6,11 +6,11 @@ import 'package:praktyki_projekt/components/conversation_bubble.dart';
 import 'package:praktyki_projekt/services/conversation_service.dart';
 
 class conversation extends StatefulWidget {
-  final String receiverUserEmail;
+  final String receiverUserName;
   final String receiverUserID;
   const conversation({
     super.key,
-    required this.receiverUserEmail,
+    required this.receiverUserName,
     required this.receiverUserID,
   });
 
@@ -35,7 +35,7 @@ class _convetdstionState extends State<conversation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.receiverUserEmail)),
+      appBar: AppBar(title: Text(widget.receiverUserName)),
       body: Column(
         children: [
           Expanded(
