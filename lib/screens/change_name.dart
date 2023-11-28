@@ -33,7 +33,7 @@ class _changenameState extends State<changename> {
 
   changename() async{
   try {
-  await currentUser!.updatePassword(newName);
+  await currentUser!.updateDisplayName(newName);
   FirebaseAuth.instance.signOut();
   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => mainScreen()));
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
