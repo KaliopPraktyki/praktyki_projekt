@@ -20,27 +20,21 @@ class settings extends StatefulWidget {
 class _settingsState extends State<settings> {
   final user = FirebaseAuth.instance.currentUser;
 
-  String? firstName = '';
-  String? lastName = '';
-  String? email = '';
-
-  Future _getDataFromDatabase() async {
-    await FirebaseFirestore.instance.collection('usesr')
-        .doc(FirebaseAuth.instance.currentUser!.uid).get()
-        .then((snapshot) async{
-          if(snapshot.exists) {
-            setState(() {
-              firstName = snapshot.data()!['firstName'];
-              lastName = snapshot.data()!['lastName'];
-              email = snapshot.data()!['email'];
-            });
-          }
+  String? firstName = "";
+  String? lastName = "";
+  final uid = FirebaseAuth.instance.currentUser!.uid;
+  Future <void> getUserName() async {
+    await FirebaseFirestore.instance.collection('users').where('userId', isEqualTo: uid).get().then((user) async {
+      user.docs.forEach((result) {
+        firstName = result.data()['firstName'];
+        lastName = result.data()['lastName'];
+      });
     });
   }
 
   @override
-  void initState(){
-    _getDataFromDatabase();
+  void initState() {
+    getUserName();
     super.initState();
   }
 
@@ -105,10 +99,17 @@ class _settingsState extends State<settings> {
               ),
               const SizedBox(height: 10,),
               Center(
-                child: Text("Mateusz Omilian",style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                ),),
+                child: FutureBuilder(
+                  future: getUserName(),
+                  builder: (_ , AsyncSnapshot snapshot){
+                    if(snapshot.connectionState == ConnectionState.waiting){
+                      return Center( child: CircularProgressIndicator());
+                    }
+                    return Text("${firstName} ${lastName}", style:
+                    TextStyle(fontWeight: FontWeight.bold,
+                        fontSize: 25),);
+                  },
+                ),
               ),
               const SizedBox(height: 20,),
 
