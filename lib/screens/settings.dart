@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,35 @@ class settings extends StatefulWidget {
 }
 
 class _settingsState extends State<settings> {
+  final user = FirebaseAuth.instance.currentUser;
+
+  String? firstName = '';
+  String? lastName = '';
+  String? email = '';
+
+  Future _getDataFromDatabase() async {
+    await FirebaseFirestore.instance.collection('usesr')
+        .doc(FirebaseAuth.instance.currentUser!.uid).get()
+        .then((snapshot) async{
+          if(snapshot.exists) {
+            setState(() {
+              firstName = snapshot.data()!['firstName'];
+              lastName = snapshot.data()!['lastName'];
+              email = snapshot.data()!['email'];
+            });
+          }
+    });
+  }
+
   @override
+  void initState(){
+    _getDataFromDatabase();
+    super.initState();
+  }
+
+  @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
