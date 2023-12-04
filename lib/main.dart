@@ -4,7 +4,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:praktyki_projekt/auth/main_screen.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +14,7 @@ Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  await Future.delayed(const Duration(seconds: 2));
+  await Future.delayed(const Duration(seconds: 3));
   FlutterNativeSplash.remove();
 
   runApp(const MyApp());
