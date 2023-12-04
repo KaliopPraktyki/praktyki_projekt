@@ -27,13 +27,15 @@ class _UserTileState extends State<UserTile> {
           if(snapshot.connectionState == ConnectionState.waiting){
             return const Text("Loading...");
           }
-          return ListView(
-              shrinkWrap: true,
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
               children:
-            snapshot.data!.docs
-                .map<Widget>((doc) => _buildUserListItem(doc))
-                .toList(),
+              snapshot.data!.docs
+                  .map<Widget>((doc) => _buildUserListItem(doc))
+                  .toList(),
 
+            ),
           );
         }
     );
@@ -48,6 +50,7 @@ class _UserTileState extends State<UserTile> {
       return GestureDetector(
         child: Column(
           children: [
+            const SizedBox(width: 100,),
             ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: Image.asset(profileImage,
@@ -56,7 +59,7 @@ class _UserTileState extends State<UserTile> {
               ),
             ),
             const Padding(padding: EdgeInsets.symmetric(vertical: 7)),
-            Text(data['firstName']+" "+data['lastName'],
+            Text(data['firstName'],
             style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
