@@ -23,14 +23,34 @@ class _settingsState extends State<settings> {
   String? firstName = "";
   String? lastName = "";
   final uid = FirebaseAuth.instance.currentUser!.uid;
-  Future <void> getUserName() async {
-    await FirebaseFirestore.instance.collection('users').where('userId', isEqualTo: uid).get().then((user) async {
-      user.docs.forEach((result) {
-        firstName = result.data()['firstName'];
-        lastName = result.data()['lastName'];
-      });
+  Future<void> getUserName() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get()
+        .then((result) async {
+      firstName = result.data()?['firstName'];
+      lastName = result.data()?['lastName'];
+      isActive = result.data()?['isActive'] ?? false; // Replace with your field name
     });
   }
+
+
+
+  Future<void> updateActiveStatus(bool isActive) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'isActive': isActive})
+        .then((_) {
+      print('Active status updated successfully');
+    }).catchError((error) {
+      print('Error updating active status: $error');
+    });
+  }
+
+  bool isActive = false;
+
 
   @override
   void initState() {
@@ -117,18 +137,26 @@ class _settingsState extends State<settings> {
                 leading: Container(
                   width: 40,
                   height: 40,
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    color: Colors.green,
+                    color: isActive ? Colors.green : Colors.red, // Change color based on isActive
                   ),
-                  child: const Icon(Ionicons.ellipse_outline,
-                  color: Colors.green,),
                 ),
-                title: Text("Active status", style: TextStyle(fontSize: 20
-                    ,
-                color: Colors.white),),
-
+                title: Text(
+                  "Active status",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+                trailing: Switch(
+                  value: isActive,
+                  onChanged: (value) {
+                    setState(() {
+                      isActive = value;
+                      updateActiveStatus(isActive);
+                    });
+                  },
+                ),
               ),
+
               ListTile(
                 leading: Container(
                   width: 40,
