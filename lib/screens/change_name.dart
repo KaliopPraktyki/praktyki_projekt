@@ -77,7 +77,7 @@ class _changenameState extends State<changename> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          Icons.person_outline,
                           color: Colors.white,
                         ),
                         enabledBorder: OutlineInputBorder(
