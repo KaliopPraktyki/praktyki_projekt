@@ -5,7 +5,6 @@ import 'package:praktyki_projekt/auth/verify_email.dart';
 import 'package:praktyki_projekt/screens/chat.dart';
 import 'package:praktyki_projekt/screens/conversation.dart';
 import 'package:praktyki_projekt/screens/login.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class mainScreen extends StatefulWidget {
   const mainScreen({super.key});
