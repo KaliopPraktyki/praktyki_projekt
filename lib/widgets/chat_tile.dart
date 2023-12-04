@@ -27,14 +27,17 @@ class _ChatTileState extends State<ChatTile> {
             return const Text("Loading...");
           }
 
-          return ListView(
-            shrinkWrap: true,
-            children:
-            snapshot.data!.docs
-                .map<Widget>((doc) => _buildUserListItem(doc))
-                .toList(),
+          return SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children:
+              snapshot.data!.docs
+                  .map<Widget>((doc) => _buildUserListItem(doc))
+                  .toList(),
 
+            ),
           );
+
         }
     );
   }
