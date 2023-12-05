@@ -12,6 +12,7 @@ class UserTile extends StatefulWidget {
 }
 
 class _UserTileState extends State<UserTile> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,7 @@ class _UserTileState extends State<UserTile> {
   Widget _buildUserListItem(DocumentSnapshot document){
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -51,13 +53,52 @@ class _UserTileState extends State<UserTile> {
         child: Column(
           children: [
             const SizedBox(width: 100,),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Image.asset(profileImage,
-              width: 85,
-              height: 85,
-              ),
-            ),
+            Stack(
+              children: [
+                ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(profileImage,
+                width: 85,
+                height: 85,
+                ),
+              ),StreamBuilder<DocumentSnapshot>(
+                  stream: _firestore.collection("users").doc(data['userId']).snapshots(),
+                  builder: (context, snapshot){
+                    if(snapshot.hasData){
+                      if(data['status']=="online"){
+                        return Positioned(
+                          right: 7,
+                          bottom: 0,
+                          child: Container(
+                            decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
+                            child: Image.asset(
+                              "assets/online.png",
+                              width: 15,
+                              height: 15,
+                            ),
+                          ),
+                        );
+                      }else{
+                        return Positioned(
+                          right: 7,
+                          bottom: 0,
+                          child: Container(
+                            decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
+                            child: Image.asset(
+                              "assets/offline.png",
+                              width: 15,
+                              height: 15,
+                            ),
+                          ),
+                        );
+                      }
+                    }else{
+                      return Container();
+                    }
+                  }),
+              ]
+            ), 
+
             const Padding(padding: EdgeInsets.symmetric(vertical: 7)),
             Text(data['firstName'],
             style: const TextStyle(

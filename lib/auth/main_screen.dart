@@ -2,9 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/auth/auth_screen.dart';
 import 'package:praktyki_projekt/auth/verify_email.dart';
-import 'package:praktyki_projekt/screens/chat.dart';
-import 'package:praktyki_projekt/screens/conversation.dart';
-import 'package:praktyki_projekt/screens/login.dart';
 
 class mainScreen extends StatefulWidget {
   const mainScreen({super.key});
