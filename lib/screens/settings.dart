@@ -67,9 +67,10 @@ class _settingsState extends State<settings> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(onPressed: (){
-          Navigator.push(context,
+          Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const chat()),
           );
+
         },
             icon: Icon(
           Ionicons.arrow_back,
