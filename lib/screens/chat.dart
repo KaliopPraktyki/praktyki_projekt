@@ -29,7 +29,7 @@ class _chatState extends State<chat> {
           children: [
             GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const settings()),);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const settings()),);
               },
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
