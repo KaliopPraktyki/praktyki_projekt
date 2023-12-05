@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/screens/conversation.dart';
 
+import '../screens/chat.dart';
+
 class ChatTile extends StatefulWidget {
   const ChatTile({super.key});
 
@@ -11,6 +13,7 @@ class ChatTile extends StatefulWidget {
 }
 
 class _ChatTileState extends State<ChatTile> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -53,11 +56,50 @@ class _ChatTileState extends State<ChatTile> {
           children: [
             SizedBox(height: height*0.12,),
 
-            ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.asset("assets/logo.png",
-                  width: 70,
-                  height: 70,)
+            Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.asset(profileImage,
+                      width: 85,
+                      height: 85,
+                    ),
+                  ),StreamBuilder<DocumentSnapshot>(
+                      stream: _firestore.collection("users").doc(data['userId']).snapshots(),
+                      builder: (context, snapshot){
+                        if(snapshot.hasData){
+                          if(data['status']=="online"){
+                            return Positioned(
+                              right: 7,
+                              bottom: 0,
+                              child: Container(
+                                decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
+                                child: Image.asset(
+                                  "assets/online.png",
+                                  width: 15,
+                                  height: 15,
+                                ),
+                              ),
+                            );
+                          }else{
+                            return Positioned(
+                              right: 7,
+                              bottom: 0,
+                              child: Container(
+                                decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
+                                child: Image.asset(
+                                  "assets/offline.png",
+                                  width: 15,
+                                  height: 15,
+                                ),
+                              ),
+                            );
+                          }
+                        }else{
+                          return Container();
+                        }
+                      }),
+                ]
             ),
 
             const SizedBox(width: 10),
