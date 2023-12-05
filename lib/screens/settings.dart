@@ -70,6 +70,7 @@ class _settingsState extends State<settings> {
           Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const chat()),
           );
+
         },
             icon: Icon(
           Ionicons.arrow_back,
