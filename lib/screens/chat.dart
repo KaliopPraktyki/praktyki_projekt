@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/widgets/chat_tile.dart';
@@ -5,19 +6,46 @@ import 'package:praktyki_projekt/widgets/user_tile.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:praktyki_projekt/screens/settings.dart';
 
+
 class chat extends StatefulWidget {
   const chat({super.key});
 
   @override
   State<chat> createState() => _chatState();
+
 }
 
 String profileImage = "assets/logo.png";
 
 
-class _chatState extends State<chat> {
+class _chatState extends State<chat> with WidgetsBindingObserver {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  @override
+  void initState(){
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    setStatus("online");
+  }
+  void setStatus(String status) async{
+    await _firestore.collection("users").doc(_auth.currentUser?.uid).update({
+      "status": status,
+    });
+  }
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state){
+
+    if(state == AppLifecycleState.resumed){
+      //online
+      setStatus("online");
+    }else{
+      //offline
+       setStatus("offline");
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -29,7 +57,7 @@ class _chatState extends State<chat> {
           children: [
             GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const settings()),);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const settings()),);
               },
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
