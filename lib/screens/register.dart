@@ -53,6 +53,8 @@ class _registerScreenState extends State<registerScreen> {
       'email': email,
       'userId': userId,
       'profilePicture': "",
+      'isActive': "",
+      'status': "",
     });
   }
 
