@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/screens/conversation.dart';
-
 import '../screens/chat.dart';
 
 class ChatTile extends StatefulWidget {
@@ -115,48 +114,11 @@ class _ChatTileState extends State<ChatTile> {
                 ),
 
                 const SizedBox(height: 10,),
-                Text("last message",
-                  style:const TextStyle(
+
+                const Text("last message",
+                  style:TextStyle(
                     color: Colors.grey,
                     fontSize: 20,
-                  ),
-                ),
-              ],
-            ),
-
-            const Spacer(),
-
-            Column(
-
-              children: [
-
-                Text(
-                  "time",
-                  style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 20
-                  ),
-                ),
-
-                const SizedBox(width: 20,height: 10,),
-
-                Container(
-                  width: 20,
-                  height: 20,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Color.fromARGB(255, 55, 86, 56)
-                  ),
-
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text("numberOffUnreadMessages",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                      ),
-                    ),
                   ),
                 ),
               ],
