@@ -53,15 +53,13 @@ class _ChatTileState extends State<ChatTile> {
       return GestureDetector(
         child: Row(
           children: [
-            SizedBox(height: height*0.12,),
-
+            SizedBox(height: height*0.1,width: width*0.05,),
             Stack(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Image.asset(profileImage,
-                      width: 85,
-                      height: 85,
+                      width: width*0.15,
                     ),
                   ),StreamBuilder<DocumentSnapshot>(
                       stream: _firestore.collection("users").doc(data['userId']).snapshots(),
@@ -75,8 +73,7 @@ class _ChatTileState extends State<ChatTile> {
                                 decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
                                 child: Image.asset(
                                   "assets/online.png",
-                                  width: 15,
-                                  height: 15,
+                                  width: width*0.025,
                                 ),
                               ),
                             );
@@ -88,8 +85,7 @@ class _ChatTileState extends State<ChatTile> {
                                 decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
                                 child: Image.asset(
                                   "assets/offline.png",
-                                  width: 15,
-                                  height: 15,
+                                  width: width*0.025,
                                 ),
                               ),
                             );
@@ -101,7 +97,7 @@ class _ChatTileState extends State<ChatTile> {
                 ]
             ),
 
-            const SizedBox(width: 10),
+            SizedBox(width: width*0.05),
 
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
