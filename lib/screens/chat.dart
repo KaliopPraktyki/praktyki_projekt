@@ -62,8 +62,7 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Image.asset(profileImage,
-                    width: 50,
-                    height: 50,)
+                    width: width*0.12)
               ),
             ),
             Text("Chats",
@@ -74,8 +73,8 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
               ),
             ),
             Container(
-              width: 50,
-              height: 50,
+              width: width*0.12,
+              height: width*0.12,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 border: Border.all(color: Colors.grey),
@@ -126,8 +125,9 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
                     );
                   },
                 ),
-              SizedBox(height: height*0.02,),
+              SizedBox(height: height*0.03,),
               UserTile(),
+              SizedBox(height: height*0.02,),
               ChatTile(),
             ],
           ),

@@ -14,6 +14,7 @@ class UserTile extends StatefulWidget {
 class _UserTileState extends State<UserTile> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return _buildUserList();
@@ -52,14 +53,13 @@ class _UserTileState extends State<UserTile> {
       return GestureDetector(
         child: Column(
           children: [
-            const SizedBox(width: 100,),
+            SizedBox(width: width*0.25,),
             Stack(
               children: [
                 ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(profileImage,
-                width: 85,
-                height: 85,
+                  width: width*0.2,
                 ),
               ),StreamBuilder<DocumentSnapshot>(
                   stream: _firestore.collection("users").doc(data['userId']).snapshots(),
@@ -73,8 +73,7 @@ class _UserTileState extends State<UserTile> {
                             decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
                             child: Image.asset(
                               "assets/online.png",
-                              width: 15,
-                              height: 15,
+                              width: width*0.03,
                             ),
                           ),
                         );
@@ -86,8 +85,7 @@ class _UserTileState extends State<UserTile> {
                             decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
                             child: Image.asset(
                               "assets/offline.png",
-                              width: 15,
-                              height: 15,
+                              width: width*0.03,
                             ),
                           ),
                         );
@@ -98,8 +96,7 @@ class _UserTileState extends State<UserTile> {
                   }),
               ]
             ), 
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 7)),
+            SizedBox(height: height*0.001,),
             Text(data['firstName'],
             style: const TextStyle(
               color: Colors.white,
