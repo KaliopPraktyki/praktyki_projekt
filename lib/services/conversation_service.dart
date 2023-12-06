@@ -10,7 +10,17 @@ class conversation_service extends ChangeNotifier {
   //send msg
   Future<void> sendMessage(String receiverId, String message) async {
     final String currentUserId = _firebaseAuth.currentUser!.uid;
-    final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
+    String? userName = '';
+
+     await FirebaseFirestore.instance.collection('users')
+         .doc(currentUserId).get()
+         .then((snapshot) async {
+       if(snapshot.exists){
+           userName = snapshot.data()!['firstName'];
+       }
+     });
+
+    final String currentUserEmail = userName!;
     final Timestamp timestamp = Timestamp.now();
 
     //new msg
@@ -45,5 +55,6 @@ class conversation_service extends ChangeNotifier {
         .orderBy('timestamp', descending: false)
         .snapshots();
   }
+
 
 }

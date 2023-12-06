@@ -47,6 +47,7 @@ class _convetdstionState extends State<conversation> {
     });
   }
 
+
   @override
   void initState() {
     _getDataFromDatabase();
@@ -54,7 +55,6 @@ class _convetdstionState extends State<conversation> {
   }
   @override
   Widget build(BuildContext context) {
-    log(status!);
     return Scaffold(
       appBar: AppBar(title: Row(
         children: [
