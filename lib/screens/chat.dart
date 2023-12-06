@@ -39,10 +39,10 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
 
     if(state == AppLifecycleState.resumed){
       //online
-      setStatus("Online");
+      setStatus("online");
     }else{
       //offline
-       setStatus("Offline");
+       setStatus("offline");
     }
 
   }

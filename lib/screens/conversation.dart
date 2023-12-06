@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -31,11 +33,44 @@ class _convetdstionState extends State<conversation> {
       _messageController.clear();
     }
   }
+  String? status = '';
+
+  Future _getDataFromDatabase() async {
+    await FirebaseFirestore.instance.collection('users')
+        .doc(widget.receiverUserID).get()
+        .then((snapshot) async {
+      if(snapshot.exists){
+        setState(() {
+          status = snapshot.data()!['status'];
+        });
+      }
+    });
+  }
 
   @override
+  void initState() {
+    _getDataFromDatabase();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+    log(status!);
     return Scaffold(
-      appBar: AppBar(title: Text(widget.receiverUserName)),
+      appBar: AppBar(title: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(widget.receiverUserName),
+              Text(status!,
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.grey,
+              ),),
+            ],
+          ),
+        ],
+      )),
       body: Column(
         children: [
           Expanded(
