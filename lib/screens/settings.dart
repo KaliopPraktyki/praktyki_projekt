@@ -1,11 +1,15 @@
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:praktyki_projekt/auth/main_screen.dart';
 import 'package:praktyki_projekt/main.dart';
+import 'package:praktyki_projekt/model/utils.dart';
 import 'package:praktyki_projekt/screens/change_name.dart';
 import 'package:praktyki_projekt/screens/change_password.dart';
 import 'package:praktyki_projekt/screens/chat.dart';
@@ -51,6 +55,15 @@ class _settingsState extends State<settings> {
 
   bool isActive = false;
 
+  Uint8List? _image;
+
+  void selectImage() async{
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+  }
+
 
   @override
   void initState() {
@@ -59,8 +72,6 @@ class _settingsState extends State<settings> {
   }
 
   @override
-
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -102,7 +113,7 @@ class _settingsState extends State<settings> {
                       bottom: 0,
                       right: 0,
                       child: GestureDetector(
-                        // onTap: ,
+                         onTap: selectImage,
                         child: Container(
                           width: 35,
                           height: 35,
