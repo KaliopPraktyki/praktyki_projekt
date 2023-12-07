@@ -10,6 +10,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:praktyki_projekt/auth/main_screen.dart';
 import 'package:praktyki_projekt/main.dart';
 import 'package:praktyki_projekt/model/utils.dart';
+import 'package:praktyki_projekt/resources/add_data.dart';
 import 'package:praktyki_projekt/screens/change_name.dart';
 import 'package:praktyki_projekt/screens/change_password.dart';
 import 'package:praktyki_projekt/screens/chat.dart';
@@ -64,6 +65,9 @@ class _settingsState extends State<settings> {
     });
   }
 
+  void saveProfile() async {
+    String resp = await StorageData().saveData(file: _image!);
+  }
 
   @override
   void initState() {
@@ -208,6 +212,24 @@ class _settingsState extends State<settings> {
                   color: Colors.white),),
             ),
           ),),
+              ListTile(
+                leading: Container(
+                  width: 40,
+                  height: 40,
+                  child: const Icon(Ionicons.save_outline,
+                    color: Colors.white,
+                    size: 45,),
+                ),
+                title: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: GestureDetector(
+                    onTap: (){
+                      saveProfile();
+                      },
+                    child: Text("Save profile picture", style: TextStyle(fontSize: 20,
+                        color: Colors.white),),
+                  ),
+                ),),
               SizedBox(height: 200,),
               SizedBox(
                 width: 300,
