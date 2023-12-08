@@ -79,6 +79,7 @@ class _ChatTileState extends State<ChatTile> {
                                 child: Image.asset(
                                   "assets/online.png",
                                   width: width*0.025,
+                                  height: width*0.025,
                                 ),
                               ),
                             );
