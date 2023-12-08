@@ -26,7 +26,7 @@ class StorageData{
   }) async{
     String resp = "Some error occurred";
     try{
-     String imageUrl = await uploadImageToStorage("ProfileImage", file);
+     String imageUrl = await uploadImageToStorage(_auth.currentUser!.uid, file);
      await _firestore.collection("users").doc(_auth.currentUser?.uid).update({
        "profilePicture": imageUrl,
       });

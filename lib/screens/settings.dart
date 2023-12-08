@@ -4,11 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:praktyki_projekt/auth/main_screen.dart';
-import 'package:praktyki_projekt/main.dart';
 import 'package:praktyki_projekt/model/utils.dart';
 import 'package:praktyki_projekt/resources/add_data.dart';
 import 'package:praktyki_projekt/screens/change_name.dart';
@@ -27,6 +25,7 @@ class _settingsState extends State<settings> {
 
   String? firstName = "";
   String? lastName = "";
+  String? profileImg = "";
   final uid = FirebaseAuth.instance.currentUser!.uid;
   Future<void> getUserName() async {
     await FirebaseFirestore.instance
@@ -36,7 +35,12 @@ class _settingsState extends State<settings> {
         .then((result) async {
       firstName = result.data()?['firstName'];
       lastName = result.data()?['lastName'];
-      isActive = result.data()?['isActive'] ?? false; // Replace with your field name
+      if(result.data()?['profilePicture'] != ""){
+        profileImg = result.data()?['profilePicture'];
+      }else{
+        profileImg = "https://firebasestorage.googleapis.com/v0/b/smooth-talk-ececa.appspot.com/o/logo.png?alt=media&token=0c4f08a9-b2ae-4a32-a4c0-b3a3c9ad080d";
+      }
+      isActive = result.data()?['isActive'] ?? false;
     });
   }
 
@@ -77,6 +81,7 @@ class _settingsState extends State<settings> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -111,7 +116,19 @@ class _settingsState extends State<settings> {
                   children: [
                     SizedBox(
                       width: 120, height: 120,
-                      child: ClipRRect(borderRadius: BorderRadius.circular(100), child: Image.asset("assets/logoWithoutBackground.png"),),
+                      child: ClipRRect(borderRadius: BorderRadius.circular(100),
+                        child:FutureBuilder(
+                          future: getUserName(),
+                          builder: (_ , AsyncSnapshot snapshot){
+                            if(snapshot.connectionState == ConnectionState.waiting){
+                              return Center( child: CircularProgressIndicator());
+                            }
+                            return Image.network(
+                              profileImg!
+                            );
+                          },
+                        ),
+                      ),
                     ),
                     Positioned(
                       bottom: 0,

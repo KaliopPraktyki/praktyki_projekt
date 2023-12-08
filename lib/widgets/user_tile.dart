@@ -42,13 +42,19 @@ class _UserTileState extends State<UserTile> {
         }
     );
   }
+
   Widget _buildUserListItem(DocumentSnapshot document){
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+    String? profileImg = "";
+    if(data['profilePicture'] != ""){
+      profileImg = data['profilePicture'];
+    }else{
+      profileImg = "https://firebasestorage.googleapis.com/v0/b/smooth-talk-ececa.appspot.com/o/logo.png?alt=media&token=0c4f08a9-b2ae-4a32-a4c0-b3a3c9ad080d";
+    }
     if(_auth.currentUser!.email != data['email']){
       return GestureDetector(
         child: Column(
@@ -58,7 +64,7 @@ class _UserTileState extends State<UserTile> {
               children: [
                 ClipRRect(
                 borderRadius: BorderRadius.circular(50),
-                child: Image.asset(profileImage,
+                child: Image.network(profileImg!,
                   width: width*0.2,
                 ),
               ),StreamBuilder<DocumentSnapshot>(
@@ -84,7 +90,7 @@ class _UserTileState extends State<UserTile> {
                           child: Container(
                             decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
                             child: Image.asset(
-                              "assets/offline.png",
+                              "assets/online.png",
                               width: width*0.03,
                             ),
                           ),
