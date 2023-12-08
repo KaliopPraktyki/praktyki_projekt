@@ -15,17 +15,17 @@ class conversation extends StatefulWidget {
   });
 
   @override
-  State<conversation> createState() => _convetdstionState();
+  State<conversation> createState() => _conversationState();
 }
 
-class _convetdstionState extends State<conversation> {
+class _conversationState extends State<conversation> {
   final TextEditingController _messageController = TextEditingController();
-  final conversation_service _coversation_service = conversation_service();
+  final conversation_service _conversation_service = conversation_service();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
-      await _coversation_service.sendMessage(
+      await _conversation_service.sendMessage(
           widget.receiverUserID, _messageController.text
       );
       _messageController.clear();
@@ -53,7 +53,7 @@ class _convetdstionState extends State<conversation> {
 
   //msg list
   Widget _buildMessageList() {
-    return StreamBuilder(stream: _coversation_service.getMessages(widget.receiverUserID, _firebaseAuth.currentUser!.uid),
+    return StreamBuilder(stream: _conversation_service.getMessages(widget.receiverUserID, _firebaseAuth.currentUser!.uid),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Text('Error${snapshot.error}');
