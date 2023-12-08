@@ -52,7 +52,7 @@ class _registerScreenState extends State<registerScreen> {
       'lastName': lastName,
       'email': email,
       'userId': userId,
-      'profilePicture': "",
+      'profilePicture': "https://firebasestorage.googleapis.com/v0/b/smooth-talk-ececa.appspot.com/o/logo.png?alt=media&token=0c4f08a9-b2ae-4a32-a4c0-b3a3c9ad080d",
       'isActive': "",
       'status': "",
     });

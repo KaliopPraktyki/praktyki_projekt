@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:praktyki_projekt/screens/chat.dart';
 import 'package:praktyki_projekt/screens/conversation.dart';
 
 class UserTile extends StatefulWidget {
@@ -49,12 +48,6 @@ class _UserTileState extends State<UserTile> {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    String? profileImg = "";
-    if(data['profilePicture'] != ""){
-      profileImg = data['profilePicture'];
-    }else{
-      profileImg = "https://firebasestorage.googleapis.com/v0/b/smooth-talk-ececa.appspot.com/o/logo.png?alt=media&token=0c4f08a9-b2ae-4a32-a4c0-b3a3c9ad080d";
-    }
     if(_auth.currentUser!.email != data['email']){
       return GestureDetector(
         child: Column(
@@ -64,7 +57,7 @@ class _UserTileState extends State<UserTile> {
               children: [
                 ClipRRect(
                 borderRadius: BorderRadius.circular(50),
-                child: Image.network(profileImg!,
+                child: Image.network( data['profilePicture']!,
                   width: width*0.2,
                   height: width*0.2,
                 ),
@@ -91,7 +84,7 @@ class _UserTileState extends State<UserTile> {
                           child: Container(
                             decoration: BoxDecoration(borderRadius:BorderRadius.circular(50)),
                             child: Image.asset(
-                              "assets/online.png",
+                              "assets/offline.png",
                               width: width*0.03,
                             ),
                           ),

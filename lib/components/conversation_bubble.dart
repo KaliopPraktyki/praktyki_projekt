@@ -1,6 +1,4 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_message_timestamp/chat_message_timestamp.dart';
 
 
 class conversationBubble extends StatelessWidget {
