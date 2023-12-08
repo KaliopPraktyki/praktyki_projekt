@@ -48,7 +48,12 @@ class _ChatTileState extends State<ChatTile> {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+    String? profileImg = "";
+    if(data['profilePicture'] != ""){
+      profileImg = data['profilePicture'];
+    }else{
+      profileImg = "https://firebasestorage.googleapis.com/v0/b/smooth-talk-ececa.appspot.com/o/logo.png?alt=media&token=0c4f08a9-b2ae-4a32-a4c0-b3a3c9ad080d";
+    }
     if(_auth.currentUser!.email != data['email']){
       return GestureDetector(
         child: Row(
@@ -58,7 +63,7 @@ class _ChatTileState extends State<ChatTile> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(50),
-                    child: Image.asset(profileImage,
+                    child: Image.network(profileImg!,
                       width: width*0.15,
                     ),
                   ),StreamBuilder<DocumentSnapshot>(
