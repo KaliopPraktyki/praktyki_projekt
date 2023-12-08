@@ -21,10 +21,24 @@ String profileImage = "assets/logo.png";
 class _chatState extends State<chat> with WidgetsBindingObserver {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  String? profileImg = "";
+  Future _getDataFromDatabase() async {
+    await FirebaseFirestore.instance.collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid).get()
+        .then((snapshot) async {
+      if(snapshot.exists){
+        setState(() {
+          profileImg = snapshot.data()!['profilePicture'];
+        });
+      }
+    });
+  }
+
 
   @override
   void initState(){
     super.initState();
+    _getDataFromDatabase();
     WidgetsBinding.instance.addObserver(this);
     setStatus("online");
   }
@@ -61,8 +75,11 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
               },
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(profileImage,
-                    width: width*0.12)
+                  child:
+                  Image.network(profileImg!,
+                    width: width*0.12,
+                    height: width*0.12,
+                  )
               ),
             ),
             Text("Chats",
