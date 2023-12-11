@@ -6,7 +6,6 @@ import 'package:praktyki_projekt/widgets/user_tile.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:praktyki_projekt/screens/settings.dart';
 
-
 class chat extends StatefulWidget {
   const chat({super.key});
 
@@ -14,8 +13,6 @@ class chat extends StatefulWidget {
   State<chat> createState() => _chatState();
 
 }
-
-String profileImage = "assets/logo.png";
 
 
 class _chatState extends State<chat> with WidgetsBindingObserver {
@@ -31,7 +28,7 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
           profileImg = snapshot.data()!['profilePicture'];
         });
       }
-    });
+     });
   }
 
 
@@ -79,10 +76,11 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
                   Image.network(profileImg!,
                     width: width*0.12,
                     height: width*0.12,
+                    fit: BoxFit.cover,
                   )
               ),
             ),
-            Text("Chats",
+            const Text("Chats",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
@@ -96,7 +94,7 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
                 borderRadius: BorderRadius.circular(50),
                 border: Border.all(color: Colors.grey),
               ),
-              child: Icon(Ionicons.add,
+              child: const Icon(Ionicons.add,
                 color: Colors.white,
               ),
             ),
@@ -143,9 +141,9 @@ class _chatState extends State<chat> with WidgetsBindingObserver {
                   },
                 ),
               SizedBox(height: height*0.03,),
-              UserTile(),
+              const UserTile(),
               SizedBox(height: height*0.02,),
-              ChatTile(),
+              const ChatTile(),
             ],
           ),
         ),
