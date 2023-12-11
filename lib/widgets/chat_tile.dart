@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:praktyki_projekt/screens/conversation.dart';
-import '../screens/chat.dart';
 
 class ChatTile extends StatefulWidget {
   const ChatTile({super.key});
@@ -59,6 +58,8 @@ class _ChatTileState extends State<ChatTile> {
                     borderRadius: BorderRadius.circular(50),
                     child: Image.network(data['profilePicture']!,
                       width: width*0.15,
+                      height: width*0.15,
+                        fit: BoxFit.cover
                     ),
                   ),StreamBuilder<DocumentSnapshot>(
                       stream: _firestore.collection("users").doc(data['userId']).snapshots(),

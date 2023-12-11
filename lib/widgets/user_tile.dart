@@ -60,6 +60,7 @@ class _UserTileState extends State<UserTile> {
                 child: Image.network( data['profilePicture']!,
                   width: width*0.2,
                   height: width*0.2,
+                    fit: BoxFit.cover
                 ),
               ),StreamBuilder<DocumentSnapshot>(
                   stream: _firestore.collection("users").doc(data['userId']).snapshots(),
