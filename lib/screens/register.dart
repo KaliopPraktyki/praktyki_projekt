@@ -98,7 +98,7 @@ class _registerScreenState extends State<registerScreen> {
                     ],
                   ),
 
-                  SizedBox(height: 10,),
+                  SizedBox(height: 5,),
                   //first name & last name
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -250,7 +250,7 @@ class _registerScreenState extends State<registerScreen> {
                   ),
               
                   //button sing in
-                  Padding(padding: EdgeInsets.only(top: 20, left: 100, right: 100),
+                  Padding(padding: EdgeInsets.only(top: 5, left: 100, right: 100),
                     child: GestureDetector(
                       onTap: (){
                         if(_formfield.currentState!.validate()){
