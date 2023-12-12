@@ -259,7 +259,7 @@ class _registerScreenState extends State<registerScreen> {
                         singUp();
                       },
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 20),
+                        padding: EdgeInsets.symmetric(vertical: 16),
                         decoration: BoxDecoration(
                           color: Color.fromARGB(255, 55, 87, 57),
                           borderRadius: BorderRadius.circular(16),
