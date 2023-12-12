@@ -160,7 +160,7 @@ class _loginScreenState extends State<loginScreen> {
                   ),
 
                   //button sing in
-                  Padding(padding: EdgeInsets.only(top: 10, left: 100, right: 100),
+                  Padding(padding: EdgeInsets.only(top: 5, left: 100, right: 100),
                   child: GestureDetector(
                     onTap: (){
                       if(_formfield.currentState!.validate()){
@@ -168,14 +168,14 @@ class _loginScreenState extends State<loginScreen> {
                       signIn();
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 16),
+                      padding: EdgeInsets.symmetric(vertical: 20),
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 55, 87, 57),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Center(
                         child: Text(
-                          'SIGN IN',
+                          'LOG IN',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
