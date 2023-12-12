@@ -11,6 +11,7 @@ import 'package:praktyki_projekt/resources/add_data.dart';
 import 'package:praktyki_projekt/screens/change_name.dart';
 import 'package:praktyki_projekt/screens/change_password.dart';
 import 'package:praktyki_projekt/screens/chat.dart';
+import 'package:praktyki_projekt/screens/upload_profile_picture.dart';
 
 class settings extends StatefulWidget {
   const settings({super.key});
@@ -130,7 +131,9 @@ class _settingsState extends State<settings> {
                       bottom: 0,
                       right: 0,
                       child: GestureDetector(
-                         onTap: selectImage,
+                         onTap: (){
+                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => uploadPictureScreen()));
+                         },
                         child: Container(
                           width: 35,
                           height: 35,
@@ -225,24 +228,6 @@ class _settingsState extends State<settings> {
                   color: Colors.white),),
             ),
           ),),
-              ListTile(
-                leading: Container(
-                  width: 40,
-                  height: 40,
-                  child: const Icon(Ionicons.save_outline,
-                    color: Colors.white,
-                    size: 45,),
-                ),
-                title: Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: GestureDetector(
-                    onTap: (){
-                      saveProfile();
-                      },
-                    child: Text("Save profile picture", style: TextStyle(fontSize: 20,
-                        color: Colors.white),),
-                  ),
-                ),),
               SizedBox(height: 200,),
               SizedBox(
                 width: 300,
