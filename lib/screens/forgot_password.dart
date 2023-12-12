@@ -47,7 +47,10 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text("Enter your email and we will send you a new password reset link"),
+                child: Text("Enter your email and we will send you a new password reset link",
+                style: TextStyle(
+                  fontSize: 15,
+                ),),
               ),
               Container(
                 margin: EdgeInsets.all(20),
