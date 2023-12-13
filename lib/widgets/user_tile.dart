@@ -57,7 +57,7 @@ class _UserTileState extends State<UserTile> {
               children: [
                 ClipRRect(
                 borderRadius: BorderRadius.circular(50),
-                child: Image.network( data['profilePicture']!,
+                child: Image.network(data['profilePicture']!,
                   width: width*0.2,
                   height: width*0.2,
                     fit: BoxFit.cover
@@ -118,6 +118,3 @@ class _UserTileState extends State<UserTile> {
     }
   }
 }
-
-
-
