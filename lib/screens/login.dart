@@ -55,7 +55,7 @@ class _loginScreenState extends State<loginScreen> {
                       SizedBox(width: 20,),
                       Text('Login',
                       style: TextStyle(
-                        fontSize: 45,
+                        fontSize: 35,
                         color: Colors.white,
                       ),),
                     ],
@@ -65,9 +65,9 @@ class _loginScreenState extends State<loginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(width: 20,),
-                      Text('Please sign in to continue',
+                      Text('Please log in to continue',
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           color: Colors.grey,
                         ),),
                     ],
@@ -99,7 +99,7 @@ class _loginScreenState extends State<loginScreen> {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 20),
                         border: InputBorder.none,
-                        labelText: "email", labelStyle: TextStyle(color: Colors.white, fontSize: 20),
+                        labelText: "email", labelStyle: TextStyle(color: Colors.white, fontSize: 15),
                         prefixIcon: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: Icon(Icons.email_rounded,
@@ -135,7 +135,7 @@ class _loginScreenState extends State<loginScreen> {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 20),
                         border: InputBorder.none,
-                        labelText: "password", labelStyle: TextStyle(color: Colors.white, fontSize: 20),
+                        labelText: "password", labelStyle: TextStyle(color: Colors.white, fontSize: 15),
                         suffixIcon: InkWell(
                           onTap: (){
                             setState(() {
@@ -160,30 +160,29 @@ class _loginScreenState extends State<loginScreen> {
                   ),
 
                   //button sing in
-                  Padding(padding: EdgeInsets.only(top: 5, left: 100, right: 100),
-                  child: GestureDetector(
+                  GestureDetector(
                     onTap: (){
                       if(_formfield.currentState!.validate()){
                       }
                       signIn();
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 20),
+                      height: 60,
+                      width: 390,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 55, 87, 57),
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'LOG IN',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             color: Colors.white,
                           ),
                         ),
                       ),
                     ),
-                  ),
                   ),
 
                   //forgot password
@@ -193,13 +192,13 @@ class _loginScreenState extends State<loginScreen> {
                     children: [
                       Text('Forgot Password? ',
                         style: TextStyle(
-                          fontSize: 17,
+                          fontSize: 14,
                           color: Colors.grey,
                         ),),
                       GestureDetector(
                         child: Text('Click here',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 14,
                             color: Color.fromARGB(255, 55, 87, 57),
                           ),),
                       onTap: (){
@@ -218,13 +217,13 @@ class _loginScreenState extends State<loginScreen> {
                     children: [
                       Text('New to Smooth Talk? ',
                         style: TextStyle(
-                          fontSize: 17,
+                          fontSize: 14,
                           color: Colors.grey,
                         ),),
                       GestureDetector(
                         child: Text('Create an account',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 14,
                             color: Color.fromARGB(255, 55, 87, 57),
                           ),),
                         onTap: widget.showRegisterScreen,

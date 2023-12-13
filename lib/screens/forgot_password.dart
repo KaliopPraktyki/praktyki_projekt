@@ -46,6 +46,13 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                child: Text("Forgot your password?",
+                  style: TextStyle(
+                    fontSize: 40,
+                  ),),
+              ),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text("Enter your email and we will send you a new password reset link",
                 style: TextStyle(
@@ -78,31 +85,29 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
                       ),
                     ),
                     hintStyle: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       color: Colors.white,
                     ),
                   ),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: 10, left: 90, right: 90),
-                child: GestureDetector(
-                  onTap: (){
-                    passwordReset();
-                  },
-                  child: Container(
-                    width: 200,
-                    padding: EdgeInsets.symmetric(vertical: 18),
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 55, 87, 57),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Reset password',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+              GestureDetector(
+                onTap: (){
+                  passwordReset();
+                },
+                child: Container(
+                  width: 375,
+                  padding: EdgeInsets.symmetric(vertical: 18),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 55, 87, 57),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Reset password',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -114,13 +119,13 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
                 children: [
                   Text('Do you want to log in? ',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 14,
                       color: Colors.grey,
                     ),),
                   GestureDetector(
                     child: Text('Click here',
                       style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 14,
                         color: Color.fromARGB(255, 55, 87, 57),
                       ),),
                     onTap: (){

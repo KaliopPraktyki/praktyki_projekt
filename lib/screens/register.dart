@@ -71,25 +71,24 @@ class _registerScreenState extends State<registerScreen> {
                   //logo
                   Image.asset('assets/logoWithoutBackground.png',
                     scale: 1.5,),
-              
-                  SizedBox(height: 5,),
+
                   //Text Login
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(width: 20,),
+                      SizedBox(width:15,),
                       Text('Register',
                         style: TextStyle(
-                          fontSize: 45,
+                          fontSize: 35,
                           color: Colors.white,
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
                   //Please sign in to continue
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(width: 20,),
+                      SizedBox(width: 15,),
                       Text('Please sign up to continue',
                         style: TextStyle(
                           fontSize: 25,
@@ -104,9 +103,9 @@ class _registerScreenState extends State<registerScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.all(12),
-                        height: 80,
-                        width: 180,
+                        margin: EdgeInsets.all(10),
+                        height: 60,
+                        width: 185,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -121,11 +120,11 @@ class _registerScreenState extends State<registerScreen> {
                             color: Colors.white,
                           ),
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
+                            contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 35),
                             border: InputBorder.none,
                             hintText: "first name",
                             hintStyle: TextStyle(
-                              fontSize: 20,
+                              fontSize: 15,
                               color: Colors.white,
                             ),
                           ),
@@ -133,9 +132,9 @@ class _registerScreenState extends State<registerScreen> {
                       ),
               
                       Container(
-                        margin: EdgeInsets.all(12),
-                        height: 80,
-                        width: 180,
+                        margin: EdgeInsets.all(10),
+                        height: 60,
+                        width: 185,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -150,11 +149,11 @@ class _registerScreenState extends State<registerScreen> {
                             color: Colors.white,
                           ),
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                            contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
                             border: InputBorder.none,
                             hintText: "last name",
                             hintStyle: TextStyle(
-                              fontSize: 20,
+                              fontSize: 15,
                               color: Colors.white,
                             ),
                           ),
@@ -165,9 +164,8 @@ class _registerScreenState extends State<registerScreen> {
               
                   //email textfield
                   Container(
-                    margin: EdgeInsets.all(12),
                     height: 80,
-                    width: 500,
+                    width: 390,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -189,7 +187,7 @@ class _registerScreenState extends State<registerScreen> {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 20),
                         border: InputBorder.none,
-                        labelText: "email", labelStyle: TextStyle(color: Colors.white, fontSize: 20),
+                        labelText: "email", labelStyle: TextStyle(color: Colors.white, fontSize: 15),
                         prefixIcon: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: Icon(Icons.email_rounded,
@@ -203,9 +201,8 @@ class _registerScreenState extends State<registerScreen> {
               
                   //password textfield
                   Container(
-                    margin: EdgeInsets.all(12),
-                    height: 80,
-                    width: 500,
+                    height: 60,
+                    width: 390,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -225,7 +222,7 @@ class _registerScreenState extends State<registerScreen> {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 20),
                         border: InputBorder.none,
-                        labelText: "password", labelStyle: TextStyle(color: Colors.white, fontSize: 20),
+                        labelText: "password", labelStyle: TextStyle(color: Colors.white, fontSize: 15),
                         suffixIcon: InkWell(
                           onTap: (){
                             setState(() {
@@ -248,29 +245,28 @@ class _registerScreenState extends State<registerScreen> {
               
                     ),
                   ),
-              
+              SizedBox(height: 20,),
                   //button sing in
-                  Padding(padding: EdgeInsets.only(top: 5, left: 100, right: 100),
-                    child: GestureDetector(
-                      onTap: (){
-                        if(_formfield.currentState!.validate()){
+                  GestureDetector(
+                    onTap: (){
+                      if(_formfield.currentState!.validate()){
 
-                        }
-                        singUp();
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 55, 87, 57),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'SING UP',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
+                      }
+                      singUp();
+                    },
+                    child: Container(
+                      height: 60,
+                      width: 390,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 55, 87, 57),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'SING UP',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -284,13 +280,13 @@ class _registerScreenState extends State<registerScreen> {
                     children: [
                       Text('Already have an account? ',
                         style: TextStyle(
-                          fontSize: 17,
+                          fontSize: 14,
                           color: Colors.grey,
                         ),),
                       GestureDetector(
-                        child: Text('Sing In',
+                        child: Text('Log In',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 14,
                             color: Color.fromARGB(255, 55, 87, 57),
                           ),),
                         onTap: widget.showLoginScreen,
