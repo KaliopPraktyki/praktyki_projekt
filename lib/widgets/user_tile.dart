@@ -58,8 +58,8 @@ class _UserTileState extends State<UserTile> {
                 ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.network(data['profilePicture']!,
-                  width: width*0.2,
-                  height: width*0.2,
+                    width: width*0.15,
+                    height: width*0.15,
                     fit: BoxFit.cover
                 ),
               ),StreamBuilder<DocumentSnapshot>(
