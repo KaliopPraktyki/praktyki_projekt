@@ -51,7 +51,7 @@ class _ChatTileState extends State<ChatTile> {
       return GestureDetector(
         child: Row(
           children: [
-            SizedBox(height: height*0.1,width: width*0.05,),
+            SizedBox(height: height*0.1,width: width*0.03,),
             Stack(
                 children: [
                   ClipRRect(
