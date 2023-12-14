@@ -79,9 +79,7 @@ class _settingsState extends State<settings> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
         leading: IconButton(onPressed: (){
           Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const chat()),
@@ -231,13 +229,12 @@ class _settingsState extends State<settings> {
               SizedBox(height: 200,),
               SizedBox(
                 width: 300,
-                height: 50,
+                height: 60,
                 child: TextButton(onPressed: (){
                   FirebaseAuth.instance.signOut();
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => mainScreen()));
                 },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
                       side: BorderSide.none,
                       shape: const StadiumBorder()
                     ),
