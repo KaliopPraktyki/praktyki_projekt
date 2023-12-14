@@ -136,7 +136,7 @@ class _conversationState extends State<conversation> {
   //msg input
   Widget _buildMessageInput() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
           //textfield
