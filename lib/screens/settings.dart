@@ -226,7 +226,7 @@ class _settingsState extends State<settings> {
                   color: Colors.white),),
             ),
           ),),
-              SizedBox(height: 200,),
+              SizedBox(height: 300,),
               SizedBox(
                 width: 300,
                 height: 60,

@@ -1,11 +1,10 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:praktyki_projekt/auth/main_screen.dart';
-import 'package:praktyki_projekt/main.dart';
 import 'package:praktyki_projekt/screens/settings.dart';
 
 class changepassword extends StatefulWidget {
@@ -28,6 +27,24 @@ class _changepasswordState extends State<changepassword> {
 
   void initState() {
     _passwordVisible;
+  }
+
+  final user = FirebaseAuth.instance.currentUser;
+
+  String? firstName = "";
+  String? lastName = "";
+  String? profileImg = "";
+  final uid = FirebaseAuth.instance.currentUser!.uid;
+  Future<void> getUserName() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get()
+        .then((result) async {
+      firstName = result.data()?['firstName'];
+      lastName = result.data()?['lastName'];
+      profileImg = result.data()?['profilePicture'];
+    });
   }
 
 
@@ -53,9 +70,8 @@ class _changepasswordState extends State<changepassword> {
 
 
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.black,
+    return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
         leading: IconButton(onPressed: () {
           Navigator.push(context,
           MaterialPageRoute(builder: (context) => const settings()),
@@ -78,6 +94,42 @@ class _changepasswordState extends State<changepassword> {
             Column(
               children: [
                 Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: SizedBox(
+                    width: 120, height: 120,
+                    child: ClipRRect(borderRadius: BorderRadius.circular(100),
+                      child:FutureBuilder(
+                        future: getUserName(),
+                        builder: (_ , AsyncSnapshot snapshot){
+                          if(snapshot.connectionState == ConnectionState.waiting){
+                            return Center( child: CircularProgressIndicator());
+                          }
+                          return Image.network(
+                            profileImg!,
+                            fit: BoxFit.cover,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10,),
+                Center(
+                  child: FutureBuilder(
+                    future: getUserName(),
+                    builder: (_ , AsyncSnapshot snapshot){
+                      if(snapshot.connectionState == ConnectionState.waiting){
+                        return Center( child: CircularProgressIndicator());
+                      }
+                      return Text("${firstName} ${lastName}", style:
+                      TextStyle(fontWeight: FontWeight.bold,
+                          fontSize: 25),);
+                    },
+                  ),
+                ),
+
+                Container(
+                  width: 300,
                   margin: EdgeInsets.only(top: 20),
                   child: Form(
                     key: _formKey,
@@ -112,27 +164,22 @@ class _changepasswordState extends State<changepassword> {
                 ),
               ],
             ),
-            SizedBox(
-              width: 300,
-              height: 50,
-              child: ElevatedButton(onPressed: (){
-                if (_formKey.currentState!.validate()) {
-                  setState(() {
-                    newPassword = newPasswordController.text;
-                  });
-                  changepassword();
-                }
-              },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      side: BorderSide.none,
-                      shape: const StadiumBorder()
-                  ),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10),
-                    child: const Text("Change", style: TextStyle(color: Colors.green,
-                        fontSize: 30),),
-                  )),
+            Container(
+              margin: EdgeInsets.only(top: 400),
+                child: ElevatedButton(onPressed: (){
+                  if (_formKey.currentState!.validate()) {
+                    setState(() {
+                      newPassword = newPasswordController.text;
+                    });
+                    changepassword();
+                  }
+                },
+                    style: ElevatedButton.styleFrom(
+                        side: BorderSide.none,
+                        shape: const StadiumBorder()
+                    ),
+                    child: const Text("Change", style: TextStyle(color: Colors.white,
+                        fontSize: 30),)),
             ),
           ],
         ),
